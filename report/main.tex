@@ -1,0 +1,91 @@
+%\listfiles % List packages used in log file
+
+\PassOptionsToPackage{
+    style=apa,
+    backend=biber
+}{biblatex} % APA style bibliography support
+
+\PassOptionsToPackage{
+    a4paper,            % Set to a4 paper
+    left    = 2.5cm,    % Left paper margin
+    right   = 2.5cm,    % Right paper margin
+    top     = 2.5cm,    % Top paper margin
+    bottom  = 2.5cm     % Bottom paper margin
+}{geometry}
+
+\documentclass[11pt]{derptex} % load custom template
+\usepackage[english]{babel} % language selection
+\DeclareLanguageMapping{english}{english-apa}    % Language mapping
+\addbibresource[datatype=bibtex]{references.bib} % Use a bibtex bibliography file (if changed, change in Makefile)
+\graphicspath{
+    {../images/}
+} % Graphics path(s)
+%\usepackage{lipsum} % For sample text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Setup main document parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main title
+\title {Title}
+% Sub title
+\subtitle {Subtitle}
+% Institution
+\institution {Institution}
+% Sub department
+\subdepartment {Subdepartment}
+% Author(s)
+\author{
+    Ingmar Delsink
+}
+% Publish data
+\date{Date}
+% Version number
+\version{0.0}
+% set the build folder (specified in makefile)
+\buildfolder{build}
+
+% Fonts (according to fontspec rules)
+\headfontlocation{ % header font
+    Path = {../fonts/nimbus-sans-l/} ,
+    Extension = .ttf ,
+    UprightFont = *_regular ,
+    ItalicFont = *_italic ,
+    BoldFont = *_bold ,
+    BoldItalicFont = *_bold-italic,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
+}
+\headfontname{nimbus-sans-l}
+\bodyfontlocation{ % body font
+    \printheadfontlocation
+}
+\bodyfontname{\printheadfontname}
+\loadfonts % reload the fonts
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%    Start document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    \input{./chapters/titlepage}                % Include the title page
+    \inputmarkdown{chapters}{summary}{unlisted} % Summary (unlisted)
+
+    \toctitle{Table of Contents}                % ToC title
+    \printtableofcontents                       % Generate and include a table of contents
+
+    \inputmarkdown{chapters}{introduction}      % Introduction
+
+    \inputmarkdown{chapters}{conclusion}        % Conclusion
+
+    \printlistoftables                          % Generate and include a LoT
+
+    \printlistoffigures                         % Generate and include a LoF
+
+    \printbibliography[heading=bibintoc]        % Generate and include bibliography if needed
+    %\thispagestyle{empty}                       % Disable header and footer on bibliography
+\end{document}

@@ -1,0 +1,6 @@
+install:
+    - sudo ./install_latex.sh
+
+script:
+    - cd report
+    - make

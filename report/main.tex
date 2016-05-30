@@ -48,10 +48,10 @@
 \headfontlocation{ % header font
     Path = {../fonts/nimbus-sans-l/} ,
     Extension = .ttf ,
-    UprightFont = *_regular ,
-    ItalicFont = *_italic ,
-    BoldFont = *_bold ,
-    BoldItalicFont = *_bold-italic,
+    UprightFont = nimbus-sans-l_regular ,
+    ItalicFont = nimbus-sans-l_italic ,
+    BoldFont = nimbus-sans-l_bold ,
+    BoldItalicFont = nimbus-sans-l_bold-italic,
     Ligatures = {   % Set Ligature options
        NoCommon,
        NoRequired,
@@ -62,11 +62,26 @@
     }
 }
 \headfontname{nimbus-sans-l}
+
 \bodyfontlocation{ % body font
-    \printheadfontlocation
+    Path = {../fonts/liberation_sans/} ,
+    Extension = .ttf ,
+    UprightFont =LiberationSans-Regular ,
+    ItalicFont = LiberationSans-Italic ,
+    BoldFont = LiberationSans-Bold ,
+    BoldItalicFont = LiberationSans-BoldItalic,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
 }
-\bodyfontname{\printheadfontname}
-\loadfonts % reload the fonts
+\bodyfontname{nimbus-sans-l}
+
+\loadfonts % load the fonts
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Start document
@@ -79,6 +94,8 @@
     \printtableofcontents                       % Generate and include a table of contents
 
     \inputmarkdown{chapters}{introduction}      % Introduction
+
+    \inputmarkdown{chapters}{chapter1}          % chap 1
 
     \inputmarkdown{chapters}{conclusion}        % Conclusion
 

@@ -6,7 +6,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\RequirePackage[english]{babel} % language selection
 \RequirePackage[utf8]{inputenc} % Accept different input encodings
 \RequirePackage{csquotes}       % Context sensitive quotation facilities
 \RequirePackage{biblatex}       % APA style bibliography support
@@ -110,23 +109,8 @@
 \newcommand{\printheadfontlocation}{\@headfontlocation}
 \def\headfontname#1{\def\@headfontname{#1}}
 \newcommand{\printheadfontname}{\@headfontname}
-\headfontlocation{
-    Path = {../fonts/nimbus-sans-l/} ,
-    Extension = .ttf ,
-    UprightFont = *_regular ,
-    ItalicFont = *_italic ,
-    BoldFont = *_bold ,
-    BoldItalicFont = *_bold-italic,
-    Ligatures = {   % Set Ligature options
-       NoCommon,
-       NoRequired,
-       NoContextual,
-       NoHistoric,
-       NoDiscretionary,
-       TeX
-    }
-} % set default value
-\headfontname{nimbus-sans-l} % set default value
+\headfontlocation{} % set default value
+\headfontname{} % set default value
 
 % body font
 \def\bodyfontlocation#1{\def\@bodyfontlocation{#1}}
@@ -140,9 +124,28 @@
 
 % load the header and body fonts
 \newcommand\loadfonts[0] {
-    \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
-    \newfontfamily\bodyfont[\printbodyfontlocation]{\printbodyfontname}
-    \setmainfont[\printbodyfontlocation]{\printbodyfontname}
+    \ifthenelse{\equal{\printheadfontlocation}{}}{ % is empty, don't set
+        \def\headfont{}
+    }{
+        \ifthenelse{\equal{\printheadfontname}{}}{ % is empty, don't set
+            \def\headfont{}
+        }{
+            % not empty
+            \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
+        }
+    }
+
+    \ifthenelse{\equal{\printbodyfontlocation}{}}{ % is empty, don't set
+        \def\bodyfont{}
+    }{
+        \ifthenelse{\equal{\printbodyfontname}{}}{ % is empty, don't set
+            \def\bodyfont{}
+        }{
+            % not empty
+            \newfontfamily\bodyfont[\printbodyfontlocation]{\printbodyfontname}
+            \setmainfont[\printbodyfontlocation]{\printbodyfontname}
+        }
+    }
 }
 \loadfonts
 
@@ -394,7 +397,6 @@
     }
 }
 
-% pandoc -f markdown -t latex Document.md | perl -00 -pe "s/^\\\addcontentsline(\{[^}]*\}){3}\n//ms" > Document.tex
 %%%%%%%%%%%%%%%%%%%%%%
 %% unlisted from ToC
 %%%%%%%%%%%%%%%%%%%%%%

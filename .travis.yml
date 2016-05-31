@@ -12,6 +12,8 @@ notifications:
 install:
     - sudo ./install_latex.sh YES
 
+env:
+    - TEST_DIR=report
+
 script:
-    - cd report
-    - make
+    - cd $TEST_DIR && make

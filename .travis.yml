@@ -10,7 +10,7 @@ notifications:
         on_failure: always
 
 install:
-    - sudo install_latex.sh YES
+    - sudo ./install_latex.sh YES
 
 script:
     - cd report

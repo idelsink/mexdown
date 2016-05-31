@@ -52,7 +52,7 @@ DEB_PACKAGE_NAMES=(
     texlive-xetex
     latex-xcolor
     lmodern
-    biblatex
+    biber
     pandoc
     make
 )

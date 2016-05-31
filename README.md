@@ -21,7 +21,7 @@ Just write the chapters with mixed markdown and LaTeX commands,
 include it in the `main.tex` file, and you're done.
 
 For all the features and commands,
-see [Chapter 1](./report/chapters/chapter1.md) of the given files.
+see the [features](./report/chapters/features.md) chapter of the given files.
 
 ## Dependencies
 

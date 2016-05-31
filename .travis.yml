@@ -1,5 +1,5 @@
 install:
-    - sudo ./install_latex.sh
+    - yes Y | sudo ./install_latex.sh
 
 script:
     - cd report

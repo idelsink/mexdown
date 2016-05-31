@@ -2,7 +2,7 @@
 dist: trusty
 
 install:
-    - sudo ./install_latex.sh
+    - sudo ./install_latex.sh YES
 
 script:
     - cd report

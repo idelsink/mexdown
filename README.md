@@ -6,7 +6,12 @@ The supplied makefile can generate a PDF from these files.
 
 ## Templates
 
--   report
+### report
+
+Tested on:
+
+-   Ubuntu 14.04.3 LTS
+-   Fedora 23
 
 ## Dependencies
 

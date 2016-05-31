@@ -1,8 +1,16 @@
 # Ubuntu Trusty support
 dist: trusty
 
+os:
+    - linux
+
+notifications:
+    email:
+        on_success: never
+        on_failure: always
+
 install:
-    - sudo ./install_latex.sh YES
+    - sudo install_latex.sh YES
 
 script:
     - cd report

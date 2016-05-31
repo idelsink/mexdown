@@ -1,3 +1,6 @@
+# Ubuntu Trusty support
+dist: trusty
+
 install:
     - yes Y | sudo ./install_latex.sh
 

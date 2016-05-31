@@ -41,6 +41,7 @@ DNF_PACKAGE_NAMES=(
     texlive-multirow
     texlive-collection-fontsrecommended
     pandoc
+    make
 )
 # apt-get
 DEB_PACKAGE_NAMES=(
@@ -51,15 +52,18 @@ DEB_PACKAGE_NAMES=(
     texlive-xetex
     latex-xcolor
     lmodern
-    biber
+    biblatex
     pandoc
+    make
 )
 
 if [[ ! -z $DNF_CMD ]]; then
     echo "Installing with DNF"
+    sudo dnf check-update
     sudo dnf install ${DNF_PACKAGE_NAMES[@]}
 elif [[ ! -z $APT_GET_CMD ]]; then
     echo "Installing with APT"
+    sudo apt-get update
     sudo apt-get install ${DEB_PACKAGE_NAMES[@]} --no-install-recommends # No recommended docs of 500+ MB!
 else
     echo "package manager not supported"

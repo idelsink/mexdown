@@ -1,4 +1,4 @@
-# LaTeX templates
+# LaTeX templates [![Build Status](https://travis-ci.org/MrCrazyID/latex_templates.svg?branch=master)](https://travis-ci.org/MrCrazyID/latex_templates)
 
 Some LaTeX templates.
 

@@ -4,6 +4,10 @@ Some LaTeX templates.
 
 The supplied makefile can generate a PDF from these files.
 
+## Templates
+
+-   report
+
 ## Dependencies
 
 To make the documentation from the LaTeX source files,

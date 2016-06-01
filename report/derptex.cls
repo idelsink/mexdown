@@ -37,6 +37,11 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 \RequirePackage{ifthen}         % Conditional commands in LATEX documents
 
+% DerpTeX template version
+\def\templateversion#1{\def\@templateversion{#1}}
+\newcommand{\printtemplateversion}{\@templateversion}
+\templateversion{1.0.0} % set default value
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   Setup main document parameters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

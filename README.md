@@ -1,4 +1,4 @@
-# LaTeX templates [![Build Status](https://travis-ci.org/MrCrazyID/latex_templates.svg?branch=master)](https://travis-ci.org/MrCrazyID/latex_templates)
+# LaTeX templates [![Build Status](https://travis-ci.org/idelsink/latex_templates.svg?branch=master)](https://travis-ci.org/idelsink/latex_templates)
 
 Some LaTeX templates.
 
@@ -8,7 +8,7 @@ The supplied makefile can generate a PDF from these files.
 
 Templates tested on:
 
--   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/MrCrazyID/latex_templates))
+-   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/latex_templates))
 -   Fedora 23
 
 ### report

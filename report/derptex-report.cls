@@ -15,7 +15,7 @@
 \RequirePackage{fancyhdr}       % Make header end footer
 \RequirePackage{tocloft}        % Control table of contents, figures, etc
 \RequirePackage{changepage}     % for the adjustwidth environment
-\RequirePackage[quiet]{fontspec}% load custom fonts
+%\RequirePackage[quiet]{fontspec}% load custom fonts
 \RequirePackage{titlesec}       % set format per section type
 \RequirePackage{fancyvrb}       % Sophisticated verbatim text
 \RequirePackage{longtable}      % Longtable support
@@ -37,42 +37,17 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 \RequirePackage{ifthen}         % Conditional commands in LATEX documents
 
+\RequirePackage{../general/include-markdown}
+\RequirePackage{../general/custom-fonts}
+\RequirePackage{../general/unlisted-toc}
+\RequirePackage{../general/document-properties}
+\RequirePackage{../general/lists}
+
 % DerpTeX template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}
 \templateversion{1.0.0} % set default value
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Setup main document parameters
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Main title
-\def\title#1{\def\@title{#1}}
-\newcommand{\printtitle}{\@title}
-\title{} % set default value
-% Sub title
-\def\subtitle#1{\def\@subtitle{#1}}
-\newcommand{\printsubtitle}{\@subtitle}
-\subtitle{} % set default value
-% Institution
-\def\institution#1{\def\@institution{#1}}
-\newcommand{\printinstitution}{\@institution}
-\institution{} % set default value
-% Sub department
-\def\subdepartment#1{\def\@subdepartment{#1}}
-\newcommand{\printsubdepartment}{\@subdepartment}
-\subdepartment{} % set default value
-% Author(s)
-\def\author#1{\def\@author{#1}}
-\newcommand{\printauthor}{\@author}
-\author{} % set default value
-% Publish data
-\def\date#1{\def\@date{#1}}
-\newcommand{\printdate}{\@date}
-\date{} % set default value
-% Version number
-\def\version#1{\def\@version{#1}}
-\newcommand{\printversion}{\@version}
-\version{} % set default value
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Styling
@@ -109,49 +84,6 @@
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts
 %%%%%%%%%%%%%%%%%%%%%%
-% header font
-\def\headfontlocation#1{\def\@headfontlocation{#1}}
-\newcommand{\printheadfontlocation}{\@headfontlocation}
-\def\headfontname#1{\def\@headfontname{#1}}
-\newcommand{\printheadfontname}{\@headfontname}
-\headfontlocation{} % set default value
-\headfontname{} % set default value
-
-% body font
-\def\bodyfontlocation#1{\def\@bodyfontlocation{#1}}
-\newcommand{\printbodyfontlocation}{\@bodyfontlocation}
-\def\bodyfontname#1{\def\@bodyfontname{#1}}
-\newcommand{\printbodyfontname}{\@bodyfontname}
-\bodyfontlocation{
-    \printheadfontlocation
-} % set default value
-\bodyfontname{\printheadfontname} % set default value
-
-% load the header and body fonts
-\newcommand\loadfonts[0] {
-    \ifthenelse{\equal{\printheadfontlocation}{}}{ % is empty, don't set
-        \def\headfont{}
-    }{
-        \ifthenelse{\equal{\printheadfontname}{}}{ % is empty, don't set
-            \def\headfont{}
-        }{
-            % not empty
-            \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
-        }
-    }
-
-    \ifthenelse{\equal{\printbodyfontlocation}{}}{ % is empty, don't set
-        \def\bodyfont{}
-    }{
-        \ifthenelse{\equal{\printbodyfontname}{}}{ % is empty, don't set
-            \def\bodyfont{}
-        }{
-            % not empty
-            \newfontfamily\bodyfont[\printbodyfontlocation]{\printbodyfontname}
-            \setmainfont[\printbodyfontlocation]{\printbodyfontname}
-        }
-    }
-}
 \loadfonts
 
 % Footnotes
@@ -364,51 +296,4 @@
     \rhead{\bodyfont\nouppercase\leftmark}
     \lfoot{\bodyfont\printdate}
     \rfoot{\bodyfont\thepage}
-}
-
-%%%%%%%%%%%%%%%%%%%%%%
-%% Lists
-%%%%%%%%%%%%%%%%%%%%%%
-\newenvironment{shortlist}
-{ \begin{itemize}
-    \setlength{\itemsep}{0pt}
-    \setlength{\parskip}{0pt}
-    \setlength{\parsep}{0pt}     }
-{ \end{itemize}                  }
-
-%%%%%%%%%%%%%%%%%%%%%%
-%% Markdown to LaTeX
-%%%%%%%%%%%%%%%%%%%%%%
-\def\buildfolder#1{\def\@buildfolder{#1}}
-\newcommand{\printbuildfolder}{\@buildfolder}
-\buildfolder{build}
-\newcommand\inputmarkdown[3]% #1 = path, #2 = filename, #3 param
-{\immediate\write18{
-        pandoc  % converter
-        --chapters             % set first header to chapters
-        ./#1/#2.md              % source
-        -f markdown -t latex    % type specification
-        -o \printbuildfolder/#2.tex         % destination/output
-    }
-    \ifthenelse{\equal{#3}{unlisted}} {
-        \let\oldaddcontentsline\addcontentsline % copy old implementation
-        \renewcommand{\addcontentsline}[3]{}    % redefine
-    }{% false
-    }
-    \input{./\printbuildfolder/#2}
-    \ifthenelse{\equal{#3}{unlisted}} {
-        \let\addcontentsline\oldaddcontentsline % copy back
-    }{% false
-    }
-}
-
-%%%%%%%%%%%%%%%%%%%%%%
-%% unlisted from ToC
-%%%%%%%%%%%%%%%%%%%%%%
-\newcommand\unlistedtoc[1]% #1 = unlisted chapter, section, paragraph etc
-{
-    \let\oldaddcontentsline\addcontentsline % copy old implementation
-    \renewcommand{\addcontentsline}[3]{}    % redefine
-    #1                                      % write things
-    \let\addcontentsline\oldaddcontentsline % copy back
 }

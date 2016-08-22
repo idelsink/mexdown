@@ -1,0 +1,28 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{include-markdown}[2016/08/22 Convert markdown to latex and include the latex file]
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Markdown to LaTeX
+%%%%%%%%%%%%%%%%%%%%%%
+\def\buildfolder#1{\def\@buildfolder{#1}}
+\newcommand{\printbuildfolder}{\@buildfolder}
+\buildfolder{build}
+\newcommand\inputmarkdown[3]% #1 = path, #2 = filename, #3 param
+{\immediate\write18{
+        pandoc  % converter
+        --chapters             % set first header to chapters
+        ./#1/#2.md              % source
+        -f markdown -t latex    % type specification
+        -o \printbuildfolder/#2.tex         % destination/output
+    }
+    \ifthenelse{\equal{#3}{unlisted}} {
+        \let\oldaddcontentsline\addcontentsline % copy old implementation
+        \renewcommand{\addcontentsline}[3]{}    % redefine
+    }{% false
+    }
+    \input{./\printbuildfolder/#2}
+    \ifthenelse{\equal{#3}{unlisted}} {
+        \let\addcontentsline\oldaddcontentsline % copy back
+    }{% false
+    }
+}

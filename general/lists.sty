@@ -1,0 +1,12 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lists}[2016/08/22 A number of custom list formats]
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Lists
+%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{shortlist}
+{ \begin{itemize}
+    \setlength{\itemsep}{0pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}     }
+{ \end{itemize}                  }

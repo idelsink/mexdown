@@ -1,0 +1,13 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{unlisted-toc}[2016/08/22 Add an unlisted chapter, section or paragraph]
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% unlisted from ToC
+%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\unlistedtoc[1]% #1 = unlisted chapter, section, paragraph etc
+{
+    \let\oldaddcontentsline\addcontentsline % copy old implementation
+    \renewcommand{\addcontentsline}[3]{}    % redefine
+    #1                                      % write things
+    \let\addcontentsline\oldaddcontentsline % copy back
+}

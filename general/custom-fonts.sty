@@ -1,0 +1,54 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{custom-fonts}[2016/08/22 Load custom font files, and use them]
+
+\RequirePackage[quiet]{fontspec}% load custom fonts
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Custom fonts
+%%%%%%%%%%%%%%%%%%%%%%
+% header font
+\def\headfontlocation#1{\def\@headfontlocation{#1}}
+\newcommand{\printheadfontlocation}{\@headfontlocation}
+\def\headfontname#1{\def\@headfontname{#1}}
+\newcommand{\printheadfontname}{\@headfontname}
+\headfontlocation{} % set default value
+\headfontname{} % set default value
+
+% body font
+\def\bodyfontlocation#1{\def\@bodyfontlocation{#1}}
+\newcommand{\printbodyfontlocation}{\@bodyfontlocation}
+\def\bodyfontname#1{\def\@bodyfontname{#1}}
+\newcommand{\printbodyfontname}{\@bodyfontname}
+\bodyfontlocation{
+    \printheadfontlocation
+} % set default value
+\bodyfontname{\printheadfontname} % set default value
+
+% load the header and body fonts
+\newcommand\loadfonts[0] {
+    \ifthenelse{\equal{\printheadfontlocation}{}}{ % is empty, don't set
+        \def\headfont{}
+    }{
+        \ifthenelse{\equal{\printheadfontname}{}}{ % is empty, don't set
+            \def\headfont{}
+        }{
+            % not empty
+            \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
+        }
+    }
+
+    \ifthenelse{\equal{\printbodyfontlocation}{}}{ % is empty, don't set
+        \def\bodyfont{}
+    }{
+        \ifthenelse{\equal{\printbodyfontname}{}}{ % is empty, don't set
+            \def\bodyfont{}
+        }{
+            % not empty
+            \newfontfamily\bodyfont[\printbodyfontlocation]{\printbodyfontname}
+            \setmainfont[\printbodyfontlocation]{\printbodyfontname}
+        }
+    }
+}
+
+\ExecuteOptions{loadfonts}
+\endinput

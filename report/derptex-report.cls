@@ -37,11 +37,11 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 \RequirePackage{ifthen}         % Conditional commands in LATEX documents
 
-\RequirePackage{../general/include-markdown}
-\RequirePackage{../general/custom-fonts}
-\RequirePackage{../general/unlisted-toc}
-\RequirePackage{../general/document-properties}
-\RequirePackage{../general/lists}
+\RequirePackage{../packages/include-markdown/include-markdown}
+\RequirePackage{../packages/custom-fonts/custom-fonts}
+\RequirePackage{../packages/unlisted/unlisted-toc}
+\RequirePackage{../packages/document-properties/document-properties}
+\RequirePackage{../packages/lists/lists}
 
 % DerpTeX template version
 \def\templateversion#1{\def\@templateversion{#1}}

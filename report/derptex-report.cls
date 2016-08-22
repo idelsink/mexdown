@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{derptex}[2016/05/29 Custom report layout/format by Ingmar Delsink]
+\ProvidesClass{derptex-report}[2016/05/29 Custom report layout/format by Ingmar Delsink]
 
 \LoadClass{report} % Load default class
 

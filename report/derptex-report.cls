@@ -49,7 +49,7 @@
 % DerpTeX-report template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}
-\templateversion{1.0.0} % set default value
+\templateversion{2.0.0} % set default value
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Styling

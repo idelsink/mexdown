@@ -14,22 +14,29 @@ And another reference to some random article: \cite{blackholes}.
 
 ## include markdown
 
+```tex
+\inputmarkdown{path}{filename}{optional parameters}
+```
+
+Optional parameters:
+
+-   `unlisted` : unlisted chapter
+
 ## custom fonts
 
 Load custom font files for the headers of the main body.
 
-Use the following commands.
+Use the following command.
 
-```{language=tex}
+```tex
 % fonts (according to fontspec rules)
-% header font
-\setheadfont{
-    Path = {../fonts/nimbus-sans-l/} ,
-    Extension = .ttf ,
-    UprightFont = nimbus-sans-l_regular ,
-    ItalicFont = nimbus-sans-l_italic ,
-    BoldFont = nimbus-sans-l_bold ,
-    BoldItalicFont = nimbus-sans-l_bold-italic,
+\addfontfamily{
+    Path = {path to files} ,
+    Extension = .extension-of-font-files ,
+    UprightFont = filename-of-normal-font ,
+    ItalicFont = filename-of-italic-font ,
+    BoldFont = filename-of-bold-font ,
+    BoldItalicFont = filename-of-bolditalic-font,
     Ligatures = {   % Set Ligature options
        NoCommon,
        NoRequired,
@@ -38,24 +45,7 @@ Use the following commands.
        NoDiscretionary,
        TeX
     }
-}{nimbus-sans-l}
-% body font
-\setbodyfont{
-    Path = {../fonts/liberation_sans/} ,
-    Extension = .ttf ,
-    UprightFont =LiberationSans-Regular ,
-    ItalicFont = LiberationSans-Italic ,
-    BoldFont = LiberationSans-Bold ,
-    BoldItalicFont = LiberationSans-BoldItalic,
-    Ligatures = {   % Set Ligature options
-       NoCommon,
-       NoRequired,
-       NoContextual,
-       NoHistoric,
-       NoDiscretionary,
-       TeX
-    }
-}{liberation-sans}
+}{font name}{optional: macro name}
 ```
 
 ## lists

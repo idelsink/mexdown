@@ -1,6 +1,8 @@
-# LaTeX templates [![Build Status](https://travis-ci.org/idelsink/latex_templates.svg?branch=master)](https://travis-ci.org/idelsink/latex_templates)
+# DerpTeX-LaTeX [![Build Status](https://travis-ci.org/idelsink/latex_templates.svg?branch=master)](https://travis-ci.org/idelsink/latex_templates)
 
-Some LaTeX templates.
+Development branch: [![Build Status](https://travis-ci.org/idelsink/latex_templates.svg?branch=devel)](https://travis-ci.org/idelsink/latex_templates)
+
+DerpTeX is the "fancy" theme name for my LaTeX templates.
 
 The supplied makefile can generate a PDF from these files.
 
@@ -10,6 +12,7 @@ Templates tested on:
 
 -   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/latex_templates))
 -   Fedora 23
+-   Fedora 24
 
 ### report
 

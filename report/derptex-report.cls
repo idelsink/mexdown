@@ -35,6 +35,7 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 
 % include custom packages
+\RequirePackage{../packages/tikz-er2/tikz-er2}
 \RequirePackage{../packages/include-markdown/include-markdown}
 \RequirePackage{../packages/custom-fonts/custom-fonts}
 \RequirePackage{../packages/unlisted/unlisted-toc}

@@ -2,6 +2,8 @@
 \ProvidesPackage{include-markdown}[2016/08/22 Convert markdown to latex
 and include the latex file]
 
+\RequirePackage{ifthen}             % conditional commands in LaTeX documents
+
 % build folder location
 \def\buildfolder#1{\def\@buildfolder{#1}}
 \newcommand{\printbuildfolder}{\@buildfolder}

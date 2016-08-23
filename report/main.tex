@@ -46,7 +46,7 @@
 
 % fonts (according to fontspec rules)
 % header font
-\setheadfont{
+\addfontfamily{
     Path = {../fonts/nimbus-sans-l/} ,
     Extension = .ttf ,
     UprightFont = nimbus-sans-l_regular ,
@@ -61,9 +61,9 @@
        NoDiscretionary,
        TeX
     }
-}{nimbus-sans-l}
+}{nimbus-sans-l}{headfont}
 % body font
-\setbodyfont{
+\addfontfamily{
     Path = {../fonts/liberation_sans/} ,
     Extension = .ttf ,
     UprightFont =LiberationSans-Regular ,
@@ -78,7 +78,24 @@
        NoDiscretionary,
        TeX
     }
-}{liberation-sans}
+}{liberation-sans}{bodyfont}
+% source code font
+\addfontfamily{
+    Path = {../fonts/source-code-pro/OTF/} ,
+    Extension = .otf ,
+    UprightFont = SourceCodePro-Regular ,
+    ItalicFont = SourceCodePro-It ,
+    BoldFont = SourceCodePro-Bold ,
+    BoldItalicFont = SourceCodePro-BoldIt,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
+}{SourceCodePro}{sourcecodefont}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Start document

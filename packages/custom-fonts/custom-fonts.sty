@@ -5,64 +5,41 @@ via the fontspec package]
 \RequirePackage[quiet]{fontspec}    % load custom fonts
 \RequirePackage{ifthen}             % Conditional commands in LaTeX documents
 
-% header font
-\newcommand{\printheadfontlocation}{\@headfontlocation}
-\newcommand{\printheadfontname}{\@headfontname}
+% define empty default fonts
+\def\bodyfont{}
+\def\headfont{}
+\def\sourcecodefont{}
 
-% body font
-\newcommand{\printbodyfontlocation}{\@bodyfontlocation}
-\newcommand{\printbodyfontname}{\@bodyfontname}
-
-% load header fonts
-\newcommand\loadfonthead[0] {
-    \ifthenelse{\equal{\printheadfontlocation}{}}{ % is empty, don't set
-        \def\headfont{}
+% #1 font location according fontspec
+% #2 font name
+% #3 command name to use, if empty font name is used
+\newcommand\addfontfamily[3] {
+    \ifthenelse{\equal{#1}{}}{ % is empty
+        \PackageError{custom-fonts}
+        {no font location specified.}
+        {specify a font according to the fontspec rules}
     }{
-        \ifthenelse{\equal{\printheadfontname}{}}{ % is empty, don't set
-            \def\headfont{}
+        \ifthenelse{\equal{#2}{}}{ % is empty
+            \PackageError{custom-fonts}
+            {no font name specified.}
+            {specify a font name}
         }{
-            % not empty
-            \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
+            \ifthenelse{\equal{#3}{}}{ % is empty
+                % use name as command
+                \expandafter\let\csname#2\endcsname\undefined % delete old command
+                %\PackageWarning{custom-fonts}{text \csname#2\endcsname}
+                \expandafter\newfontfamily\csname#2\endcsname[#1]{#2} % make new font
+            }{
+                \expandafter\newfontfamily\csname#3\endcsname[#1]{#2} % make new font
+                % use #3 as command
+                \ifthenelse{\equal{#3}{bodyfont}}{
+                    % is bodyfont
+                    \setmainfont[#1]{#2}
+                }{
+                }
+            }
         }
     }
-}
-
-% load body fonts
-\newcommand\loadfontbody[0] {
-    \ifthenelse{\equal{\printbodyfontlocation}{}}{ % is empty, don't set
-        \def\bodyfont{}
-    }{
-        \ifthenelse{\equal{\printbodyfontname}{}}{ % is empty, don't set
-            \def\bodyfont{}
-        }{
-            % not empty
-            \newfontfamily\bodyfont[\printbodyfontlocation]{\printbodyfontname}
-            \setmainfont[\printbodyfontlocation]{\printbodyfontname}
-        }
-    }
-}
-
-% define load macros
-\def\headfontlocation#1{\def\@headfontlocation{#1}\loadfonthead}
-\def\headfontname#1{\def\@headfontname{#1}\loadfonthead}
-\def\bodyfontlocation#1{\def\@bodyfontlocation{#1}\loadfontbody}
-\def\bodyfontname#1{\def\@bodyfontname{#1}\loadfontbody}
-
-% set default loaded values
-\headfontlocation{}
-\headfontname{}
-\bodyfontlocation{}
-\bodyfontname{}
-
-% nice command to set the fonts
-\newcommand\setbodyfont[2] { %#1 is fontlocation, #2 is fontname
-    \bodyfontlocation{#1}
-    \bodyfontname{#2}
-}
-
-\newcommand\setheadfont[2] { %#1 is fontlocation, #2 is fontname
-    \headfontlocation{#1}
-    \headfontname{#2}
 }
 
 \endinput

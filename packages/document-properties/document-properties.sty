@@ -1,34 +1,37 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{document-properties}[2016/08/22 Document propertie variables]
+\ProvidesPackage{document-properties}[2016/08/22 Document properties variables]
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   Setup main document parameters
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Main title
+% main title
 \def\title#1{\def\@title{#1}}
 \newcommand{\printtitle}{\@title}
 \title{} % set default value
-% Sub title
+
+% sub title
 \def\subtitle#1{\def\@subtitle{#1}}
 \newcommand{\printsubtitle}{\@subtitle}
 \subtitle{} % set default value
-% Institution
+
+% institution
 \def\institution#1{\def\@institution{#1}}
 \newcommand{\printinstitution}{\@institution}
 \institution{} % set default value
-% Sub department
+
+% sub department
 \def\subdepartment#1{\def\@subdepartment{#1}}
 \newcommand{\printsubdepartment}{\@subdepartment}
 \subdepartment{} % set default value
-% Author(s)
+
+% author(s)
 \def\author#1{\def\@author{#1}}
 \newcommand{\printauthor}{\@author}
 \author{} % set default value
-% Publish data
+
+% publish data
 \def\date#1{\def\@date{#1}}
 \newcommand{\printdate}{\@date}
 \date{} % set default value
-% Version number
+
+% version number
 \def\version#1{\def\@version{#1}}
 \newcommand{\printversion}{\@version}
 \version{} % set default value

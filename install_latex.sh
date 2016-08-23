@@ -41,6 +41,8 @@ DNF_PACKAGE_NAMES=(
     texlive-spreadtab
     texlive-multirow
     texlive-collection-fontsrecommended
+    texlive-ulem
+    texlive-pgf
     pandoc
     make
 )
@@ -53,6 +55,8 @@ DEB_PACKAGE_NAMES=(
     texlive-xetex
     latex-xcolor
     lmodern
+    texlive-generic-recommended
+    pgf
     biber
     pandoc
     make

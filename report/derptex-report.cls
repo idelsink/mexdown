@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\RequirePackage[utf8]{inputenc} % Accept different input encodings
+%\RequirePackage[utf8]{inputenc} % Accept different input encodings
 \RequirePackage{csquotes}       % Context sensitive quotation facilities
 \RequirePackage{biblatex}       % APA style bibliography support
 \RequirePackage{geometry}       % Flexible and complete interface to document dimensions
@@ -15,7 +15,6 @@
 \RequirePackage{fancyhdr}       % Make header end footer
 \RequirePackage{tocloft}        % Control table of contents, figures, etc
 \RequirePackage{changepage}     % for the adjustwidth environment
-%\RequirePackage[quiet]{fontspec}% load custom fonts
 \RequirePackage{titlesec}       % set format per section type
 \RequirePackage{fancyvrb}       % Sophisticated verbatim text
 \RequirePackage{longtable}      % Longtable support
@@ -33,9 +32,7 @@
 \RequirePackage{spreadtab}      % Spreadsheet features for LATEX tabular environments
 \RequirePackage{multirow}       % Create tabular cells spanning multiple rows
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
-\RequirePackage{enumitem}       % list support
 \RequirePackage{listings}       % Typeset source code listings using LATEX
-\RequirePackage{ifthen}         % Conditional commands in LATEX documents
 
 \RequirePackage{../packages/include-markdown/include-markdown}
 \RequirePackage{../packages/custom-fonts/custom-fonts}

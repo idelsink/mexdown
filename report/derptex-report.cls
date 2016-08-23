@@ -34,17 +34,17 @@
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 
+% include custom packages
 \RequirePackage{../packages/include-markdown/include-markdown}
 \RequirePackage{../packages/custom-fonts/custom-fonts}
 \RequirePackage{../packages/unlisted/unlisted-toc}
 \RequirePackage{../packages/document-properties/document-properties}
 \RequirePackage{../packages/lists/lists}
 
-% DerpTeX template version
+% DerpTeX-report template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}
 \templateversion{1.0.0} % set default value
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Styling

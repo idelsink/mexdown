@@ -84,8 +84,6 @@
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts
 %%%%%%%%%%%%%%%%%%%%%%
-\loadfonts
-
 % Footnotes
 \renewcommand{\footnotelayout}{
     \footnotesize\bodyfont

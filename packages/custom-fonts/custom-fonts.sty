@@ -1,31 +1,20 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{custom-fonts}[2016/08/22 Load custom font files, and use them]
+\ProvidesPackage{custom-fonts}[2016/08/22 Load custom font files, and use them
+via the fontspec package]
 
-\RequirePackage[quiet]{fontspec}% load custom fonts
+\RequirePackage[quiet]{fontspec}    % load custom fonts
+\RequirePackage{ifthen}             % Conditional commands in LaTeX documents
 
-%%%%%%%%%%%%%%%%%%%%%%
-%% Custom fonts
-%%%%%%%%%%%%%%%%%%%%%%
 % header font
-\def\headfontlocation#1{\def\@headfontlocation{#1}}
 \newcommand{\printheadfontlocation}{\@headfontlocation}
-\def\headfontname#1{\def\@headfontname{#1}}
 \newcommand{\printheadfontname}{\@headfontname}
-\headfontlocation{} % set default value
-\headfontname{} % set default value
 
 % body font
-\def\bodyfontlocation#1{\def\@bodyfontlocation{#1}}
 \newcommand{\printbodyfontlocation}{\@bodyfontlocation}
-\def\bodyfontname#1{\def\@bodyfontname{#1}}
 \newcommand{\printbodyfontname}{\@bodyfontname}
-\bodyfontlocation{
-    \printheadfontlocation
-} % set default value
-\bodyfontname{\printheadfontname} % set default value
 
-% load the header and body fonts
-\newcommand\loadfonts[0] {
+% load header fonts
+\newcommand\loadfonthead[0] {
     \ifthenelse{\equal{\printheadfontlocation}{}}{ % is empty, don't set
         \def\headfont{}
     }{
@@ -36,7 +25,10 @@
             \newfontfamily\headfont[\printheadfontlocation]{\printheadfontname}
         }
     }
+}
 
+% load body fonts
+\newcommand\loadfontbody[0] {
     \ifthenelse{\equal{\printbodyfontlocation}{}}{ % is empty, don't set
         \def\bodyfont{}
     }{
@@ -50,5 +42,27 @@
     }
 }
 
-\ExecuteOptions{loadfonts}
+% define load macros
+\def\headfontlocation#1{\def\@headfontlocation{#1}\loadfonthead}
+\def\headfontname#1{\def\@headfontname{#1}\loadfonthead}
+\def\bodyfontlocation#1{\def\@bodyfontlocation{#1}\loadfontbody}
+\def\bodyfontname#1{\def\@bodyfontname{#1}\loadfontbody}
+
+% set default loaded values
+\headfontlocation{}
+\headfontname{}
+\bodyfontlocation{}
+\bodyfontname{}
+
+% nice command to set the fonts
+\newcommand\setbodyfont[2] { %#1 is fontlocation, #2 is fontname
+    \bodyfontlocation{#1}
+    \bodyfontname{#2}
+}
+
+\newcommand\setheadfont[2] { %#1 is fontlocation, #2 is fontname
+    \headfontlocation{#1}
+    \headfontname{#2}
+}
+
 \endinput

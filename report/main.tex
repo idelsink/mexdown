@@ -44,8 +44,9 @@
 % set the build folder (specified in makefile)
 \buildfolder{build}
 
-% Fonts (according to fontspec rules)
-\headfontlocation{ % header font
+% fonts (according to fontspec rules)
+% header font
+\setheadfont{
     Path = {../fonts/nimbus-sans-l/} ,
     Extension = .ttf ,
     UprightFont = nimbus-sans-l_regular ,
@@ -60,10 +61,9 @@
        NoDiscretionary,
        TeX
     }
-}
-\headfontname{nimbus-sans-l}
-
-\bodyfontlocation{ % body font
+}{nimbus-sans-l}
+% body font
+\setbodyfont{
     Path = {../fonts/liberation_sans/} ,
     Extension = .ttf ,
     UprightFont =LiberationSans-Regular ,
@@ -78,10 +78,7 @@
        NoDiscretionary,
        TeX
     }
-}
-\bodyfontname{nimbus-sans-l}
-
-\loadfonts % load the fonts
+}{liberation-sans}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Start document

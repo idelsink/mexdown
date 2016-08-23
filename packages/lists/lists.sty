@@ -1,9 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lists}[2016/08/22 A number of custom list formats]
 
-%%%%%%%%%%%%%%%%%%%%%%
-%% Lists
-%%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{enumitem}       % list support
+
+% short list
+% a list with less spacing then normal
 \newenvironment{shortlist}
 { \begin{itemize}
     \setlength{\itemsep}{0pt}

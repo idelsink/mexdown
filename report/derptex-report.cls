@@ -43,6 +43,7 @@
 \RequirePackage{../packages/lists/lists}
 
 % include custom listings language highlight packages
+\RequirePackage{../packages/listings-lang/language-basicstyle}
 \RequirePackage{../packages/listings-lang/language-tex}
 
 % DerpTeX-report template version

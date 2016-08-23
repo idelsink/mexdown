@@ -42,6 +42,9 @@
 \RequirePackage{../packages/document-properties/document-properties}
 \RequirePackage{../packages/lists/lists}
 
+% include custom listings language highlight packages
+\RequirePackage{../packages/listings-lang/language-tex}
+
 % DerpTeX-report template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}

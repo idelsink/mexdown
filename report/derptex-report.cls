@@ -39,7 +39,7 @@
 \RequirePackage{../packages/include-markdown/include-markdown}
 \RequirePackage{../packages/custom-fonts/custom-fonts}
 \RequirePackage{../packages/unlisted/unlisted-toc}
-\RequirePackage{../packages/document-properties/document-properties}
+\RequirePackage{../packages/document-properties/report-properties}
 \RequirePackage{../packages/lists/lists}
 
 % include custom listings language highlight packages

@@ -1,20 +1,21 @@
-# Makefile for Documentation
+# makefile for documentation
 LATEX_PDF=xelatex
-BIBTEX=biber
-COPY_BIB=find -name "*.bib" -not -path "./$(BUILD_DIR)/*" | xargs cp -t $(BUILD_DIR)
 LATEXFLAGS=-enable-write18
+BIBTEX=biber
 RM=rm -f
 BUILD_DIR=build
-COPY_BIB=find -name "*.bib" -not -path "./$(BUILD_DIR)/*" | xargs cp -t $(BUILD_DIR)
+COPY_BIB=echo $(bibtex_src) | xargs cp -t $(BUILD_DIR)
 CHECK_BUILD=if [ ! -d "./$(BUILD_DIR)" ];then	\
 				mkdir $(BUILD_DIR);     		\
 			fi
-DERPTEX_LATEX_DIR=.:$(shell dirname $(shell pwd)):$(TEXMFHOME)
+# directory to the DerpTeX-LaTeX repository
+DERPTEX_LATEX_DIR=$(shell dirname $(shell pwd))
+latex_src=./main.tex
+bibtex_src=./misc/references.bib
 
 # Generate PDF
-latex_src=./main.tex
 document_name=document
-latex_to_pdf=export TEXMFHOME=$(DERPTEX_LATEX_DIR); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
+latex_to_pdf=export TEXMFHOME=.:$(DERPTEX_LATEX_DIR):$(TEXMFHOME); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
 documentation:$(latex_src)
 			  $(CHECK_BUILD)
 			  $(COPY_BIB)

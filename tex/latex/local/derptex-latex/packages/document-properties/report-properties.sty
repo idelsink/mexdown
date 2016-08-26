@@ -2,21 +2,13 @@
 \ProvidesPackage{report-properties}[2016/08/25 Document properties variables
 for a report]
 
+\RequirePackage{general-properties}
+
 % usage:
 % set property via:
 % \property{value}
 % print property via:
 % \printproperty
-
-% main title
-\def\title#1{\def\@title{#1}}
-\newcommand{\printtitle}{\@title}
-\title{} % set default value
-
-% sub title
-\def\subtitle#1{\def\@subtitle{#1}}
-\newcommand{\printsubtitle}{\@subtitle}
-\subtitle{} % set default value
 
 % institution
 \def\institution#1{\def\@institution{#1}}
@@ -27,18 +19,3 @@ for a report]
 \def\subdepartment#1{\def\@subdepartment{#1}}
 \newcommand{\printsubdepartment}{\@subdepartment}
 \subdepartment{} % set default value
-
-% author(s)
-\def\author#1{\def\@author{#1}}
-\newcommand{\printauthor}{\@author}
-\author{} % set default value
-
-% publish data
-\def\date#1{\def\@date{#1}}
-\newcommand{\printdate}{\@date}
-\date{} % set default value
-
-% version number
-\def\version#1{\def\@version{#1}}
-\newcommand{\printversion}{\@version}
-\version{} % set default value

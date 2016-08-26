@@ -1,0 +1,8 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{build-helper}[2016/08/26 A helper package for building
+related stuff]
+
+% build folder location
+\def\buildfolder#1{\def\@buildfolder{#1}}
+\newcommand{\printbuildfolder}{\@buildfolder}
+\buildfolder{} % set default value

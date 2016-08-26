@@ -3,11 +3,7 @@
 and include the latex file]
 
 \RequirePackage{ifthen}             % conditional commands in LaTeX documents
-
-% build folder location
-\def\buildfolder#1{\def\@buildfolder{#1}}
-\newcommand{\printbuildfolder}{\@buildfolder}
-\buildfolder{build} % set default folder
+\RequirePackage{build-helper}
 
 \newcommand\inputmarkdown[3]
 % #1 = path,

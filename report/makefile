@@ -9,7 +9,7 @@ COPY_BIB=find -name "*.bib" -not -path "./$(BUILD_DIR)/*" | xargs cp -t $(BUILD_
 CHECK_BUILD=if [ ! -d "./$(BUILD_DIR)" ];then	\
 				mkdir $(BUILD_DIR);     		\
 			fi
-DERPTEX_LATEX_DIR=$(shell dirname $(shell pwd))
+DERPTEX_LATEX_DIR=.:$(shell dirname $(shell pwd)):$(TEXMFHOME)
 
 # Generate PDF
 latex_src=./main.tex

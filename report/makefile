@@ -9,11 +9,12 @@ COPY_BIB=find -name "*.bib" -not -path "./$(BUILD_DIR)/*" | xargs cp -t $(BUILD_
 CHECK_BUILD=if [ ! -d "./$(BUILD_DIR)" ];then	\
 				mkdir $(BUILD_DIR);     		\
 			fi
+DERPTEX_LATEX_DIR=$(shell dirname $(shell pwd))
 
 # Generate PDF
 latex_src=./main.tex
 document_name=document
-latex_to_pdf=$(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
+latex_to_pdf=export TEXMFHOME=$(DERPTEX_LATEX_DIR); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
 documentation:$(latex_src)
 			  $(CHECK_BUILD)
 			  $(COPY_BIB)

@@ -62,7 +62,7 @@ Make diagrams with tikz-er2
 \begin{figure}[H]
     \centering
     \resizebox{.9\textwidth}{!}{
-        \input{../packages/tikz-er2/docs/cars}
+        \input{cars}
     }
     \caption{E-R diagram for a used car store database.}
     \label{fig:er_diagram_for_a_used_car_store_database.}

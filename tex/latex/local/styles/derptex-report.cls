@@ -35,16 +35,16 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 
 % include custom packages
-\RequirePackage{../packages/tikz-er2/tikz-er2}
-\RequirePackage{../packages/include-markdown/include-markdown}
-\RequirePackage{../packages/custom-fonts/custom-fonts}
-\RequirePackage{../packages/unlisted/unlisted-toc}
-\RequirePackage{../packages/document-properties/report-properties}
-\RequirePackage{../packages/lists/lists}
+\RequirePackage{tikz-er2}
+\RequirePackage{include-markdown}
+\RequirePackage{custom-fonts}
+\RequirePackage{unlisted-toc}
+\RequirePackage{report-properties}
+\RequirePackage{lists}
 
 % include custom listings language highlight packages
-\RequirePackage{../packages/listings-lang/language-basicstyle}
-\RequirePackage{../packages/listings-lang/language-tex}
+\RequirePackage{language-basicstyle}
+\RequirePackage{language-tex}
 
 % DerpTeX-report template version
 \def\templateversion#1{\def\@templateversion{#1}}

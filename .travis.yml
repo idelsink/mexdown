@@ -14,6 +14,7 @@ install:
 
 env:
     - TEST_DIR=report
+    - TEST_DIR=cv
 
 script:
     - cd $TEST_DIR && make

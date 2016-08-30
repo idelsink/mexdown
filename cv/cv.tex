@@ -1,0 +1,125 @@
+%\listfiles % List packages used in log file
+
+\PassOptionsToPackage{
+    style=apa,
+    backend=biber
+}{biblatex} % APA style bibliography support
+
+\PassOptionsToPackage{
+    a4paper,            % Set to a4 paper
+    left    = 2.5cm,    % Left paper margin
+    right   = 2.5cm,    % Right paper margin
+    top     = 2.5cm,    % Top paper margin
+    bottom  = 2.5cm     % Bottom paper margin
+}{geometry}
+
+\documentclass[11pt]{derptex-cv} % load custom template
+\usepackage[english]{babel} % language selection
+\DeclareLanguageMapping{english}{english-apa}    % Language mapping
+%\addbibresource[datatype=bibtex]{references.bib} % Use a bibtex bibliography file (if changed, change in Makefile)
+\graphicspath{
+    {../images/}
+} % Graphics path(s)
+%\usepackage{lipsum} % For sample text
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Setup main document parameters
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main title
+\title {Title}
+\name{John}{Doe}
+\photo[70pt][0.4pt]{placeholder}
+\address{Street}{City}{Country}
+\email{john@doe.com}
+\homepage{doe.com}
+\mobile{mobile}
+\phone{phone}
+\fax{fax}
+\quote{"some quote" - John Doe}
+
+% Publish data
+\date{Date}
+% Version number
+\version{0.0}
+% set the build folder (specified in makefile)
+%\buildfolder{build}
+
+% fonts (according to fontspec rules)
+% header font
+\addfontfamily{
+    Path = {../fonts/nimbus-sans-l/} ,
+    Extension = .ttf ,
+    UprightFont = nimbus-sans-l_regular ,
+    ItalicFont = nimbus-sans-l_italic ,
+    BoldFont = nimbus-sans-l_bold ,
+    BoldItalicFont = nimbus-sans-l_bold-italic,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
+}{nimbus-sans-l}{headfont}
+% body font
+\addfontfamily{
+    Path = {../fonts/liberation_sans/} ,
+    Extension = .ttf ,
+    UprightFont =LiberationSans-Regular ,
+    ItalicFont = LiberationSans-Italic ,
+    BoldFont = LiberationSans-Bold ,
+    BoldItalicFont = LiberationSans-BoldItalic,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
+}{liberation-sans}{bodyfont}
+% source code font
+\addfontfamily{
+    Path = {../fonts/source-code-pro/OTF/} ,
+    Extension = .otf ,
+    UprightFont = SourceCodePro-Regular ,
+    ItalicFont = SourceCodePro-It ,
+    BoldFont = SourceCodePro-Bold ,
+    BoldItalicFont = SourceCodePro-BoldIt,
+    Ligatures = {   % Set Ligature options
+       NoCommon,
+       NoRequired,
+       NoContextual,
+       NoHistoric,
+       NoDiscretionary,
+       TeX
+    }
+}{SourceCodePro}{sourcecodefont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%    Start document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+    % profile
+    %\makecvtitle
+    \section{Profile}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Address}{some\\address}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Cell}{0600000000}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Email}{hello@world.com}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{LinkedIn}{url}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Nationality}{...}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Languages}{...}
+
+    \section{Some entries}
+    \cventry{\yeardate\formatdate{01}{01}{2016} - present}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
+    \cventry{\yeardate\formatdate{01}{01}{2000} - \yeardate\formatdate{01}{01}{2010}}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
+
+    %\cventry{0000 - 0000}{title}{institution/employer}{localization\\loc}{optional: grade}{optional: comment/job description}
+    %\cventry[one]{two}{three}{some \\ random \\ text \\ some \\ more}{five}{}{}
+    \cventry{two\\2}{three\\3}{four\\4}{five\\5}{six\\6}{seven\\7}
+    % Skills
+    % Education
+    % Experience
+
+\end{document}

@@ -86,6 +86,10 @@
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts
 %%%%%%%%%%%%%%%%%%%%%%
+% define empty default fonts
+\def\bodyfont{}
+\def\headfont{}
+\def\sourcecodefont{}
 % Footnotes
 \renewcommand{\footnotelayout}{
     \footnotesize\bodyfont

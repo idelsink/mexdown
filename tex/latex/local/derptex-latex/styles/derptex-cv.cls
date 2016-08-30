@@ -2,6 +2,9 @@
 \ProvidesClass{derptex-cv}[2016/08/27 Custom CV layout/format by Ingmar Delsink]
 
 \LoadClass{moderncv} % Load default class
+\moderncvstyle{empty}
+%\moderncvstyle{casual}
+%\moderncvcolor{blue}
 \newcommand{\subsubsection}{}
 \newcommand{\paragraph}{}
 \newcommand{\subparagraph}{}
@@ -38,7 +41,7 @@
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 
 % include custom packages
-%\RequirePackage{cv-properties} % not yet needed
+\RequirePackage{cv-properties} % not yet needed
 \RequirePackage{custom-fonts}
 \RequirePackage{include-markdown}
 \RequirePackage{custom-fonts}
@@ -84,7 +87,7 @@
 }
 
 % some packages, do I need all?
-\moderncvstyle{empty}
+
 \RequirePackage{multirow}
 \RequirePackage{xparse}
 \RequirePackage{makecell}
@@ -95,7 +98,7 @@
 % date
 \newdateformat{yeardate}{\THEYEAR}
 
-\RequirePackage{showframe} % for debug
+%\RequirePackage{showframe} % for debug
 
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts
@@ -159,7 +162,7 @@
     \let\oldhbadness\hbadness % read hbadness value
     \hfuzz=5.000pt % set temp value to ignore underfull errors
     \hbadness=10000 % set temp value to ignore underfull errors
-    \begin{tabularx}{\textwidth}{ | p{#2} | X@{} | p{#3} | }
+    \begin{tabularx}{\textwidth}{ p{#2} X@{} p{#3} }
          \hspace{\@hspacecventrydate}\begin{cventrydate}\makecell[tl]{#4}\end{cventrydate} & \makecell[tl]{%
             \begin{cventrytitle}\makecell[tl]{#5}\end{cventrytitle}\\%
             \hspace{\@\hspacecventrysubtitle}\begin{cventrysubtitle}\makecell[tl]{#6}\end{cventrysubtitle}%
@@ -207,4 +210,36 @@
     \let\hbadness\oldhbadness % restore old value
 }
 
+% print phone numbers
+% cvitemphones
+\newcommand{\cvitemphones}[0]{%
+    \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
+    \protected@edef\phonesdetails{\phonesdetails\protect\makenewline\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+
+}
+
+% set picture
+% photo[<picture width>][<picture frame thickness>]{<picture filename>}{<xshift>}{<yshift>}
+% #1: picture width
+% #2: picture frame thickness
+% #3: picture filename
+% #4: xshift
+% #5: yshift
+\renewcommandx{\photo}[5][1=2em, 2=1pt, 4=0pt, 5=0pt]{
+    \def\@photowidth{#1}
+    \def\@photoframethickness{#2}
+    \def\@photofilename{#3}
+    \def\@photoxshift{#4}
+    \def\@photoyshift{#5}
+}
+
+% place picture
+\newcommand{\printphoto}[0]{
+    \begin{tikzpicture}[remember picture,overlay]
+        \node[xshift=\dimexpr1in+\hoffset+\oddsidemargin+\@photoxshift+(\@photowidth/2),%
+              yshift=\dimexpr\paperheight-1in+\voffset+\headsep+\topmargin+\headheight+\@photoyshift-(\@photowidth/2),%
+              draw=black, line width=\@photoframethickness, inner sep=0pt] at (current page.south west){%
+        \includegraphics[width=\@photowidth]{\@photofilename}};
+    \end{tikzpicture}
+}
 \endinput

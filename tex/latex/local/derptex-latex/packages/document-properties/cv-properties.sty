@@ -1,0 +1,76 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cv-properties}[2016/08/26 Document properties variables
+for a resume (based on moderncv)]
+
+\RequirePackage{general-properties}
+
+% usage:
+% set property via:
+% \property{value}
+% print property via:
+% \printproperty
+
+% name
+% usage: \name{<firstname>}{<lastname>}
+%\renewcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+%\name{}{}
+\newcommand{\printfirstname}{\@firstname}
+\newcommand{\printlastname}{\@lastname}
+
+% address
+% usage: \address{<street>}{<street number>}{<zip code>}{<city>}{<state>}{<country>}
+\renewcommand{\address}[6]{%
+    \def\@street{#1}%
+    \def\@streetnumber{#2}%
+    \def\@zipcode{#3}%
+    \def\@city{#4}%
+    \def\@state{#5}%
+    \def\@country{#6}%
+}
+\address{}{}{}{}{}{}
+\newcommand{\printstreet}{\@street}
+\newcommand{\printstreetnumber}{\@streetnumber}
+\newcommand{\printzipcode}{\@zipcode}
+\newcommand{\printcity}{\@city}
+\newcommand{\printstate}{\@state}
+\newcommand{\printcountry}{\@country}
+
+% email
+% usage: \email{<email address>}
+%\renewcommand{\email}[1]{\def\@email{#1}}
+\newcommand{\printemail}{\@email}
+
+% homepage
+\newcommand{\printhomepage}{\@homepage}
+
+% telephone
+% usage: \phone[type]{value}
+% #1: optional is type phome
+% #2: value
+\renewcommand{\phone}[2][mobile]{
+    \expandafter\def\csname#1phone\endcsname{#2}
+}
+% usage: \printphone[type]
+\newcommand{\printphone}[1][mobile]{
+    \expandafter\csname#1phone\endcsname
+}
+
+% print phone numbers
+% prefix number suffix
+% or prefix type number suffix
+% adds a fixed/mobile/fax number to one's personal information (optional)
+% usage: \phone[<optional type>]{<number>}
+% where <optional type> should be either "fixed" (default), "mobile" or "fax
+%\collectionnew{phones}
+%\renewcommand{\phone}[2][mobile]{\collectionadd[#1]{phones}{#2}}
+% last name
+% set as name {}{}
+% address
+%   - street address
+%   - City
+%   - state
+%   - zip
+% telephone number [type]
+% email
+% website [type?]
+% photo

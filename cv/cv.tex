@@ -28,12 +28,12 @@
 % Main title
 \title {Title}
 \name{John}{Doe}
-\photo[70pt][0.4pt]{placeholder}
-\address{Street}{City}{Country}
+\photo[70pt][2pt]{placeholder}[\textwidth-70pt]
+\address{<street>}{<street number>}{<zip code>}{<city>}{<state>}{<country>}
 \email{john@doe.com}
 \homepage{doe.com}
-\mobile{mobile}
-\phone{phone}
+%\mobile{mobile}
+\phone{0600000000}
 \fax{fax}
 \quote{"some quote" - John Doe}
 
@@ -96,17 +96,18 @@
        TeX
     }
 }{SourceCodePro}{sourcecodefont}
+\usepackage{tikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Start document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-    % profile
-    %\makecvtitle
+    \printfirstname\ \printlastname
+    \printphoto
     \section{Profile}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Address}{some\\address}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Cell}{0600000000}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Email}{hello@world.com}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Address}{\printstreet\ \printstreetnumber\\\printzipcode\\\printcity\\\printstate\\\printcountry}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Cell}{\printphone[mobile]}
+    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Email}{\printemail}
     \cvitem[5em][1em][\color{black}\vrule width 2pt]{LinkedIn}{url}
     \cvitem[5em][1em][\color{black}\vrule width 2pt]{Nationality}{...}
     \cvitem[5em][1em][\color{black}\vrule width 2pt]{Languages}{...}
@@ -115,9 +116,6 @@
     \cventry{\yeardate\formatdate{01}{01}{2016} - present}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
     \cventry{\yeardate\formatdate{01}{01}{2000} - \yeardate\formatdate{01}{01}{2010}}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
 
-    %\cventry{0000 - 0000}{title}{institution/employer}{localization\\loc}{optional: grade}{optional: comment/job description}
-    %\cventry[one]{two}{three}{some \\ random \\ text \\ some \\ more}{five}{}{}
-    \cventry{two\\2}{three\\3}{four\\4}{five\\5}{six\\6}{seven\\7}
     % Skills
     % Education
     % Experience

@@ -1,6 +1,12 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{lists}[2016/08/22 A number of custom list formats]
 
+\makeatletter
+\@ifundefined{description}{%
+\newcommand\description[1]{}
+}{}
+\makeatother
+
 \RequirePackage{enumitem}       % list support
 
 % short list

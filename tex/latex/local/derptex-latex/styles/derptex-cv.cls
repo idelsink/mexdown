@@ -13,6 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\RequirePackage{showframe}      % for debug
 \RequirePackage{csquotes}       % Context sensitive quotation facilities
 \RequirePackage{biblatex}       % APA style bibliography support
 \RequirePackage{geometry}       % Flexible and complete interface to document dimensions
@@ -39,9 +40,13 @@
 \RequirePackage{multirow}       % Create tabular cells spanning multiple rows
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
+\RequirePackage{makecell}       % Tabular column heads and multilined cells
+\RequirePackage{tabularx}       % Tabulars with adjustable-width columns
+\RequirePackage{xargs}          % Define commands with many optional arguments
+\RequirePackage{datetime}       % Change format of \today with commands for current time
 
 % include custom packages
-\RequirePackage{cv-properties} % not yet needed
+\RequirePackage{cv-properties}
 \RequirePackage{custom-fonts}
 \RequirePackage{include-markdown}
 \RequirePackage{custom-fonts}
@@ -86,19 +91,8 @@
     }
 }
 
-% some packages, do I need all?
-
-\RequirePackage{multirow}
-\RequirePackage{xparse}
-\RequirePackage{makecell}
-\RequirePackage{tabularx}
-\RequirePackage{xargs} % multiple optional args
-\RequirePackage{datetime}
-
-% date
+% date format for year
 \newdateformat{yeardate}{\THEYEAR}
-
-%\RequirePackage{showframe} % for debug
 
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts
@@ -115,9 +109,7 @@
     {\sectionfont\normalfont}
     {\thesection}{1em}{}
 
-
-
-% set a environment style
+% set an environment style
 % usage: \derptexcvstyle{env name}{style}
 \newcommand{\derptexcvstyle}[2]{%
     \ifcsname#1\endcsname%

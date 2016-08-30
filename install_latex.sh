@@ -43,6 +43,10 @@ DNF_PACKAGE_NAMES=(
     texlive-collection-fontsrecommended
     texlive-ulem
     texlive-pgf
+    texlive-makecell
+    texlive-tabularx
+    texlive-xargs
+    texlive-datetime
     pandoc
     make
 )

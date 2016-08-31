@@ -191,15 +191,11 @@
     \let\oldhbadness\hbadness % read hbadness value
     \hfuzz=5.000pt % set temp value to ignore underfull errors
     \hbadness=10000 % set temp value to ignore underfull errors
-    \newlength\oldtabcolsep
-    \oldtabcolsep=\the\tabcolsep
-    \setlength{\tabcolsep}{#2}
-    \begin{tabularx}{\textwidth}{ p{#1} !{#3} p{.2\textwidth} }
+    \begin{tabularx}{\textwidth}{ p{#1}@{\hspace{#2}} !{#3} @{\hspace{#2}}X@{} } %<{\hspace{10pt}}
         \makecell[tr]{#4} & \makecell[tl]{#5}
     \end{tabularx}
     \par\vskip-1.4pt % makes it possible to merge multiple tables
     \setlength{\tabcolsep}{\oldtabcolsep} % restore old value
-    \let\oldtabcolsep\relax % let it relax.....
     \let\hfuzz\oldhfuzz % restore old value
     \let\hbadness\oldhbadness % restore old value
 }

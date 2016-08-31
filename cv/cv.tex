@@ -28,8 +28,8 @@
 % Main title
 \title {Title}
 \name{John}{Doe}
-\photo[70pt][2pt]{placeholder}[\textwidth-70pt]
-\address{<street>}{<street number>}{<zip code>}{<city>}{<state>}{<country>}
+\photo[100pt][2pt]{placeholder}[\textwidth-100pt][-7ex]
+\address{<street>}{<nr>}{<zip code>}{<city>}{<state>}{<country>}
 \email{john@doe.com}
 \homepage{doe.com}
 %\mobile{mobile}
@@ -104,20 +104,31 @@
 \begin{document}
     \printfirstname\ \printlastname
     \printphoto
-    \section{Profile}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Address}{\printstreet\ \printstreetnumber\\\printzipcode\\\printcity\\\printstate\\\printcountry}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Cell}{\printphone[mobile]}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Email}{\printemail}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{LinkedIn}{url}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Nationality}{...}
-    \cvitem[5em][1em][\color{black}\vrule width 2pt]{Languages}{...}
 
-    \section{Some entries}
+    \rule{\textwidth}{1pt}
+
+    \section{Profile}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Address}{\printstreet\ \printstreetnumber\\\printzipcode\\\printcity\\\printstate\\\printcountry}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Cell}{\printphone[mobile]}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Email}{\printemail}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{LinkedIn}{url}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Nationality}{...}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Languages}{...}
+
+    \rule{\textwidth}{1pt}
+
+    \section{Skills}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Languages}{...}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Methodologies}{...}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Tools}{...}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Platforms}{...}
+    \cvitem[7em][0.5em][\color{black}\vrule width 2pt]{Other}{...}
+
+    \section{Education}
     \cventry{\yeardate\formatdate{01}{01}{2016} - present}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
     \cventry{\yeardate\formatdate{01}{01}{2000} - \yeardate\formatdate{01}{01}{2010}}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
 
-    % Skills
-    % Education
-    % Experience
-
+    \section{Experience}
+    \cventry{\yeardate\formatdate{01}{01}{2016} - present}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
+    \cventry{\yeardate\formatdate{01}{01}{2000} - \yeardate\formatdate{01}{01}{2010}}{title}{institution/employer}{localization}{optional: grade}{optional: comment/job description}
 \end{document}

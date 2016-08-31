@@ -205,14 +205,6 @@
     \let\hbadness\oldhbadness % restore old value
 }
 
-% print phone numbers
-% cvitemphones
-\newcommand{\cvitemphones}[0]{%
-    \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
-    \protected@edef\phonesdetails{\phonesdetails\protect\makenewline\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
-
-}
-
 % set picture
 % photo[<picture width>][<picture frame thickness>]{<picture filename>}{<xshift>}{<yshift>}
 % #1: picture width
@@ -230,11 +222,13 @@
 
 % place picture
 \newcommand{\printphoto}[0]{
+    \makeatletter
     \begin{tikzpicture}[remember picture,overlay]
-        \node[xshift=\dimexpr1in+\hoffset+\oddsidemargin+\@photoxshift+(\@photowidth/2),%
-              yshift=\dimexpr\paperheight-1in+\voffset+\headsep+\topmargin+\headheight+\@photoyshift-(\@photowidth/2),%
+        \node[xshift=1in+\hoffset+\oddsidemargin+\@photoxshift+(\@photowidth/2),%
+              yshift=\paperheight-1in+\voffset+\headsep+\topmargin+\headheight+\@photoyshift-(\@photowidth/2),%
               draw=black, line width=\@photoframethickness, inner sep=0pt] at (current page.south west){%
         \includegraphics[width=\@photowidth]{\@photofilename}};
     \end{tikzpicture}
+    \makeatother
 }
 \endinput

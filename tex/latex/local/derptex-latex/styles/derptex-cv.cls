@@ -195,7 +195,6 @@
         \makecell[tr]{#4} & \makecell[tl]{#5}
     \end{tabularx}
     \par\vskip-1.4pt % makes it possible to merge multiple tables
-    \setlength{\tabcolsep}{\oldtabcolsep} % restore old value
     \let\hfuzz\oldhfuzz % restore old value
     \let\hbadness\oldhbadness % restore old value
 }

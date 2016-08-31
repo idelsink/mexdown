@@ -26,6 +26,15 @@ include it in the `main.tex` file, and you're done.
 For all the features and commands,
 see the [features](./report/chapters/features.md) chapter of the given files.
 
+### CV
+
+This template is based on a empty `moderncv` LaTeX class.
+This template was designed with some own design ideas in mind.
+The base template isn't that neat,
+but the layout of this template was made in such a way that it is customizable.
+
+Look at the example in the `cv.tex` file as demonstrated in: [/cv/cv.tex](./cv/cv.tex)
+
 ## Dependencies
 
 To make the documentation from the LaTeX source files,

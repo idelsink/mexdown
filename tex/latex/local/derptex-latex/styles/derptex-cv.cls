@@ -8,7 +8,6 @@
 \newcommand{\subsubsection}{}
 \newcommand{\paragraph}{}
 \newcommand{\subparagraph}{}
-\newcommand{\test}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages

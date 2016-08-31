@@ -128,10 +128,13 @@
 % cventry hspace
 % usage: \hspaceTYPE{value}
 \def\hspacecventrydate#1{\def\@hspacecventrydate{#1}}
+\newcommand{\printhspacecventrydate}{\@hspacecventrydate}
 \hspacecventrydate{0em} % set default value
 \def\hspacecventrysubtitle#1{\def\@hspacecventrysubtitle{#1}}
+\newcommand{\printhspacecventrysubtitle}{\@hspacecventrysubtitle}
 \hspacecventrysubtitle{0.4em} % set default value
 \def\hspacecventrybody#1{\def\@hspacecventrybody{#1}}
+\newcommand{\printhspacecventrybody}{\@hspacecventrybody}
 \hspacecventrybody{0.8em} % set default value
 
 % add an entry to the CV
@@ -155,18 +158,18 @@
     \hfuzz=5.000pt % set temp value to ignore underfull errors
     \hbadness=10000 % set temp value to ignore underfull errors
     \begin{tabularx}{\textwidth}{ p{#2} X@{} p{#3} }
-         \hspace{\@hspacecventrydate}\begin{cventrydate}\makecell[tl]{#4}\end{cventrydate} & \makecell[tl]{%
+         \hspace{\printhspacecventrydate}\begin{cventrydate}\makecell[tl]{#4}\end{cventrydate} & \makecell[tl]{%
             \begin{cventrytitle}\makecell[tl]{#5}\end{cventrytitle}\\%
-            \hspace{\@\hspacecventrysubtitle}\begin{cventrysubtitle}\makecell[tl]{#6}\end{cventrysubtitle}%
+            \hspace{\printhspacecventrysubtitle}\begin{cventrysubtitle}\makecell[tl]{#6}\end{cventrysubtitle}%
             \ifx\relax#8%
                 % empty
             \else
-                \\\hspace{\@\hspacecventrybody}\begin{cventrybody}\makecell[tl]{#8}\end{cventrybody}
+                \\\hspace{\printhspacecventrybody}\begin{cventrybody}\makecell[tl]{#8}\end{cventrybody}
             \fi
             \ifx\relax#9%
                 % empty
             \else
-                \\\hspace{\@\hspacecventrybody}\begin{cventrybody}\makecell[tl]{#9}\end{cventrybody}
+                \\\hspace{\printhspacecventrybody}\begin{cventrybody}\makecell[tl]{#9}\end{cventrybody}
             \fi
             } & \begin{cventrylocalization}\makecell[tr]{#7}\end{cventrylocalization}
     \end{tabularx}

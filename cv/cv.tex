@@ -32,8 +32,7 @@
 \address{<street>}{<nr>}{<zip code>}{<city>}{<state>}{<country>}
 \email{john@doe.com}
 \homepage{doe.com}
-%\mobile{mobile}
-\phone{0600000000}
+\phone[mobile]{0600000000}
 \fax{fax}
 \quote{"some quote" - John Doe}
 
@@ -41,8 +40,6 @@
 \date{Date}
 % Version number
 \version{0.0}
-% set the build folder (specified in makefile)
-%\buildfolder{build}
 
 % fonts (according to fontspec rules)
 % header font
@@ -79,30 +76,12 @@
        TeX
     }
 }{liberation-sans}{bodyfont}
-% source code font
-\addfontfamily{
-    Path = {../fonts/source-code-pro/OTF/} ,
-    Extension = .otf ,
-    UprightFont = SourceCodePro-Regular ,
-    ItalicFont = SourceCodePro-It ,
-    BoldFont = SourceCodePro-Bold ,
-    BoldItalicFont = SourceCodePro-BoldIt,
-    Ligatures = {   % Set Ligature options
-       NoCommon,
-       NoRequired,
-       NoContextual,
-       NoHistoric,
-       NoDiscretionary,
-       TeX
-    }
-}{SourceCodePro}{sourcecodefont}
-\usepackage{tikz}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Start document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
-    \printfirstname\ \printlastname
+    {\LARGE\printfirstname\ \printlastname}
     \printphoto
 
     \rule{\textwidth}{1pt}

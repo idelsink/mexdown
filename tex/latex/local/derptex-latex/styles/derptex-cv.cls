@@ -2,12 +2,18 @@
 \ProvidesClass{derptex-cv}[2016/08/27 Custom CV layout/format by Ingmar Delsink]
 
 \LoadClass{moderncv} % Load default class
-\moderncvstyle{empty}
-%\moderncvstyle{casual}
-%\moderncvcolor{blue}
-\newcommand{\subsubsection}{}
-\newcommand{\paragraph}{}
-\newcommand{\subparagraph}{}
+\moderncvstyle{empty} % set to empty template
+
+% missing commands
+\@ifundefined{subsubsection}{%
+    \newcommand{\subsubsection}{}
+}{}
+\@ifundefined{paragraph}{%
+    \newcommand{\paragraph}{}
+}{}
+\@ifundefined{subparagraph}{%
+    \newcommand{\subparagraph}{}
+}{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages
@@ -105,7 +111,7 @@
 % title
 % section
 \titleformat{\section}
-    {\sectionfont\normalfont}
+    {\sectionfont\large\bfseries}
     {\thesection}{1em}{}
 
 % set an environment style

@@ -28,12 +28,12 @@ see the [features](./report/chapters/features.md) chapter of the given files.
 
 ### CV
 
-This template is based on a empty `moderncv` LaTeX class.
+This template is based on an empty `moderncv` LaTeX class.
 This template was designed with some own design ideas in mind.
 The base template isn't that neat,
-but the layout of this template was made in such a way that it is customizable.
+but the layout of this template is made in such a way that it is customizable.
 
-Look at the example in the `cv.tex` file as demonstrated in: [/cv/cv.tex](./cv/cv.tex)
+Look at the example in the `cv.tex` file. See [/cv/cv.tex](./cv/cv.tex)
 
 ## Dependencies
 
@@ -52,3 +52,9 @@ Make commands available:
 -   `make` or `make document`: Build the PDF file from the LaTeX files.
 -   `make clean`: Clean the build directory
 -   `make purge`: Delete the Build directory
+
+## License
+
+> You can check out the full license [here](./LICENSE)
+
+This project is licensed under the terms of the **MIT** license.

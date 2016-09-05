@@ -44,7 +44,8 @@ DNF_PACKAGE_NAMES=(
     texlive-ulem
     texlive-pgf
     texlive-makecell
-    texlive-tabularx
+    texlive-ltablex
+    texlive-moderncv
     texlive-xargs
     texlive-datetime
     pandoc

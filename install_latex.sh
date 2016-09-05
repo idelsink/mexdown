@@ -10,6 +10,7 @@ YES=""
 # Get package manager
 DNF_CMD=$(which dnf)
 APT_GET_CMD=$(which apt-get)
+PACMAN_CMD=$(which pacman)
 
 # Packages per manager
 # DNF
@@ -66,6 +67,23 @@ DEB_PACKAGE_NAMES=(
     pandoc
     make
 )
+# pacman
+PACMAN_PACKAGE_NAMES=(
+    texlive-bibtexextra
+    texlive-core
+    texlive-formatsextra
+    texlive-genericextra
+    texlive-htmlxml
+    texlive-humanities
+    texlive-latexextra
+    texlive-pictures
+    texlive-plainextra
+    texlive-pstricks
+    texlive-science
+    biber
+    pandoc
+    make
+)
 
 # YES check
 if [[ $1 == "YES" ]]; then
@@ -80,6 +98,11 @@ elif [[ ! -z $APT_GET_CMD ]]; then
     echo "Installing with APT"
     sudo apt-get update
     sudo apt-get install ${DEB_PACKAGE_NAMES[@]} ${YES} --no-install-recommends # No recommended docs of 500+ MB!
+elif [[ ! -z $PACMAN_CMD ]]; then
+    if [[ ! -z $YES ]]; then
+        YES="--noconfirm"
+    fi
+    sudo pacman -Sy --needed ${YES} ${PACMAN_PACKAGE_NAMES[@]}
 else
     echo "package manager not supported"
     exit 1;

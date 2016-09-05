@@ -33,6 +33,7 @@
 \RequirePackage{multirow}       % Create tabular cells spanning multiple rows
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
+\RequirePackage{parskip}        % Replace paragraph indents with vertical whitespace
 
 % include custom packages
 \RequirePackage{tikz-er2}

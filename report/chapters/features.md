@@ -67,3 +67,10 @@ Make diagrams with tikz-er2
     \caption{E-R diagram for a used car store database.}
     \label{fig:er_diagram_for_a_used_car_store_database.}
 \end{figure}
+
+## Tests
+
+Add list at **END** of chapter.
+
+-   item 1
+-   item 2

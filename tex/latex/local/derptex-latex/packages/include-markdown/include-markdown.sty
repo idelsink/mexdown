@@ -29,6 +29,15 @@ and include the latex file]
         }
         % include generated file
         \input{./\printbuildfolder/#2}
+        % this newline here is NEEDED
+        % this because \input is used.
+        % Pandoc will remove the last newline.
+        % and tex has troubles with no newline after a list
+        % this should fix that and doesn't conflict with newlines
+        % (for what I tested)
+        %%%%%%%%%%%%%%%%%%%%%%% OBLIGATORY NEWLINE
+
+        %%%%%%%%%%%%%%%%%%%%%%% END OF OBLIGATORY NEWLINE
         % if unlisted, make sure it wont go into ToC
         \ifthenelse{\equal{#3}{unlisted}} {
             \let\addcontentsline\oldaddcontentsline % copy back

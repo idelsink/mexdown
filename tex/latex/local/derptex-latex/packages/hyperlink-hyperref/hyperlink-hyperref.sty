@@ -1,0 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{hyperlink-hyperref}[2016/09/12 Renew hyperlink command
+to a hyperref command. hyperlink doesn't support links to other files and
+hyperref does.]
+
+\RequirePackage{hyperref} % Generate links
+
+\renewcommand*{\hyperlink}[2]{%
+    \hyperref[#1]{#2}% this comment is needed to PURGE all extra ghost spaces it will include
+}

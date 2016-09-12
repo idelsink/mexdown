@@ -42,6 +42,7 @@
 \RequirePackage{unlisted-toc}
 \RequirePackage{report-properties}
 \RequirePackage{lists}
+\RequirePackage{hyperlink-hyperref}
 
 % include custom listings language highlight packages
 \RequirePackage{language-basicstyle}

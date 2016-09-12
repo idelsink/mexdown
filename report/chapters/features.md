@@ -68,6 +68,10 @@ Make diagrams with tikz-er2
     \label{fig:er_diagram_for_a_used_car_store_database.}
 \end{figure}
 
+## Linking to things
+
+[This](#summary) links to the summary. 
+
 ## Tests
 
 Add list at **END** of chapter.

@@ -284,7 +284,7 @@
 \DeclareCaptionFormat{tabcapfont}
     {\bodyfont \small\textit{\textbf{#1#2}}#3}    % caption format
 \captionsetup[table]{format=tabcapfont}         % set defined caption
-\counterwithin{table}{section}
+\counterwithin{table}{chapter}
 % Sub Tables
 \renewcommand{\thesubtable}{\alph{subtable}}   % a, b etc.
 % Figures

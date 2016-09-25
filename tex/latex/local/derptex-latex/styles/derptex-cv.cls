@@ -166,14 +166,14 @@
          \hspace{\printhspacecventrydate}\begin{cventrydate}\makecell[tl]{#4}\end{cventrydate} & \makecell[tl]{%
             \begin{cventrytitle}\makecell[tl]{#5}\end{cventrytitle}\\%
             \hspace{\printhspacecventrysubtitle}\begin{cventrysubtitle}\makecell[tl]{#6}\end{cventrysubtitle}%
-            \ifx\relax{#8}%
+            \if\relax\detokenize{#8}\relax%
                 % empty
-            \else
+            \else%
                 \\\hspace{\printhspacecventrybody}\begin{cventrybody}\makecell[tl]{#8}\end{cventrybody}
             \fi
-            \ifx\relax{#9}%
+            \if\relax\detokenize{#9}\relax%
                 % empty
-            \else
+            \else%
                 \\\hspace{\printhspacecventrybody}\begin{cventrybody}\makecell[tl]{#9}\end{cventrybody}
             \fi
             } & \begin{cventrylocalization}\makecell[tr]{#7}\end{cventrylocalization}

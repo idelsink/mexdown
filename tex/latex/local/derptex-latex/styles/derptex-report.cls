@@ -57,7 +57,7 @@
 %%%%    Styling
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperlinks formatting
-\newcommand{\loadhypersetup}[0]{%
+\AtEndPreamble{%
     \hypersetup{
         colorlinks=true,            % Colors the text of links and anchors.
         pdfborderstyle={/S/U/W 1},  % underline links instead of boxes
@@ -83,10 +83,14 @@
             Institution={\printinstitution},
             Subdepartment={\printsubdepartment},
             Version={\printversion}
-        }
+        },
+        pdfstartpage  = 1,
+        pdfauthor = {\printauthor},
+        pdftitle = {\printtitle},
+        pdfcreator = {\LaTeX{} with 'DerpTeX-report' package},
+        bookmarksdepth = 2 % to show sections and subsections
     }
 }
-\loadhypersetup % load hyper setup default
 
 %%%%%%%%%%%%%%%%%%%%%%
 %% Custom fonts

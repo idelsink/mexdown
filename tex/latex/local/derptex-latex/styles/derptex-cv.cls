@@ -68,31 +68,38 @@
 %%%%    Styling
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Hyperlinks formatting
-\hypersetup{
-    colorlinks=true,            % Colors the text of links and anchors.
-    pdfborderstyle={/S/U/W 1},  % underline links instead of boxes
-    linkcolor=[RGB]{50,50,50},  % Color for normal internal links.
-    anchorcolor=red,            % Color for anchor text.
-    citecolor=red,              % Color for bibliographical citations in text.
-    filecolor=magenta,          % Color for URLs which open local files.
-    menucolor=red,              % Color for Acrobat menu items.
-    runcolor=red,               % Color for run links (launch annotations).
-    urlcolor=[RGB]{50,50,50},   % Color for linked URLs.
-    bookmarks=true,             % A set of Acrobat bookmarks are written
-    bookmarksnumbered=true,     % If Acrobat bookmarks are requested, include section numbers.
-    citebordercolor=red,        % The color of the box around citations
-    filebordercolor=red,        % The color of the box around links to files
-    linkbordercolor=red,        % The color of the box around normal links
-    menubordercolor=red,        % The color of the box around Acrobat menu links
-    urlbordercolor=red,         % The color of the box around links to URLs
-    runbordercolor=red,         % Color of border around ‘run’ links
-    pdfinfo={                   % Global PDF info
-        Title={\printtitle},
-        Subject={\printsubtitle},
-        Author={\printauthor},
-        %Institution={\printinstitution},
-        %Subdepartment={\printsubdepartment},
-        Version={\printversion}
+\AtEndPreamble{
+    \hypersetup{
+        colorlinks=true,            % Colors the text of links and anchors.
+        pdfborderstyle={/S/U/W 1},  % underline links instead of boxes
+        linkcolor=[RGB]{50,50,50},  % Color for normal internal links.
+        anchorcolor=red,            % Color for anchor text.
+        citecolor=red,              % Color for bibliographical citations in text.
+        filecolor=magenta,          % Color for URLs which open local files.
+        menucolor=red,              % Color for Acrobat menu items.
+        runcolor=red,               % Color for run links (launch annotations).
+        urlcolor=[RGB]{50,50,50},   % Color for linked URLs.
+        bookmarks=true,             % A set of Acrobat bookmarks are written
+        bookmarksnumbered=true,     % If Acrobat bookmarks are requested, include section numbers.
+        citebordercolor=red,        % The color of the box around citations
+        filebordercolor=red,        % The color of the box around links to files
+        linkbordercolor=red,        % The color of the box around normal links
+        menubordercolor=red,        % The color of the box around Acrobat menu links
+        urlbordercolor=red,         % The color of the box around links to URLs
+        runbordercolor=red,         % Color of border around ‘run’ links
+        pdfinfo={                   % Global PDF info
+            Title={\printtitle},
+            Subject={\printsubtitle},
+            Author={\printauthor},
+            %Institution={\printinstitution},
+            %Subdepartment={\printsubdepartment},
+            Version={\printversion}
+        },
+        pdfstartpage  = 1,
+        pdfauthor = {\printauthor},
+        pdftitle = {\printtitle},
+        pdfcreator = {\LaTeX{} with 'DerpTeX-cv' package},
+        bookmarksdepth = 2 % to show sections and subsections
     }
 }
 

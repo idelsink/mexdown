@@ -176,7 +176,7 @@
             \else%
                 \\\hspace{\printhspacecventrybody}\begin{cventrybody}\makecell[tl]{#9}\end{cventrybody}
             \fi
-            } & \begin{cventrylocalization}\makecell[tr]{#7}\end{cventrylocalization}
+            } & \begin{cventrylocalization}\makebox[#3][r]{\makecell[tr]{#7}}\end{cventrylocalization}
     \end{tabularx}
 
     \vspace{#1}

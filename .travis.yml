@@ -11,6 +11,8 @@ notifications:
 
 install:
     - sudo ./install_latex.sh YES
+    - sudo mkdir -p /usr/share/fonts/fontawesome
+    - sudo cp tex/latex/local/derptex-latex/packages/fontawesome/opentype/FontAwesome.otf /usr/share/fonts/fontawesome/
 
 env:
     - TEST_DIR=report

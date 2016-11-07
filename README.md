@@ -1,7 +1,5 @@
 # DerpTeX-LaTeX [![Build Status](https://travis-ci.org/idelsink/derptex-latex.svg?branch=master)](https://travis-ci.org/idelsink/derptex-latex)
 
-Development branch: [![Build Status](https://travis-ci.org/idelsink/derptex-latex.svg?branch=devel)](https://travis-ci.org/idelsink/derptex-latex)
-
 DerpTeX is the "fancy" theme name for my LaTeX templates.
 
 The supplied makefile can generate a PDF from these files.

@@ -49,6 +49,7 @@ DNF_PACKAGE_NAMES=(
     texlive-moderncv
     texlive-xargs
     texlive-datetime
+    texlive-mwe
     pandoc
     make
 )

@@ -1,33 +1,36 @@
-# makefile for documentation
-LATEX_PDF=xelatex
-LATEXFLAGS=-enable-write18 -halt-on-error -file-line-error
-BIBTEX=biber
-RM=rm -f
-BUILD_DIR=build
-COPY_BIB=echo $(bibtex_src) | xargs cp -t $(BUILD_DIR)
-CHECK_BUILD=if [ ! -d "./$(BUILD_DIR)" ];then	\
-				mkdir $(BUILD_DIR);     		\
-			fi
-# directory to the DerpTeX-LaTeX repository
-DERPTEX_LATEX_DIR=$(shell dirname $(shell pwd))
-latex_src=./main.tex
-bibtex_src=./misc/references.bib
-
-# Generate PDF
+# configuration, edit these values if necessary
+DerpTeX_LaTeX_dir=$(shell dirname $(shell pwd)) # directory to the DerpTeX-LaTeX repository
+build_dir=build
+tex_src=./main.tex
+bipp_src=./misc/references.bib
 document_name=$(shell basename $(shell pwd)) # name of current directory
-latex_to_pdf=export TEXMFHOME=.:$(DERPTEX_LATEX_DIR):$(TEXMFHOME); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
-documentation:$(latex_src)
-			  $(CHECK_BUILD)
-			  $(COPY_BIB)
-			  $(latex_to_pdf)
-			  cd $(BUILD_DIR)/;$(BIBTEX) $(document_name).bcf
-			  $(latex_to_pdf)
-			  $(latex_to_pdf)
+
+##########################
+# DerpTex-LaTeX makefile #
+##########################
+# only edit if you know what you're doing; the point of no return
+TEX_ENGINE=xelatex
+TEX_ENGINE_FLAGS=-enable-write18 -halt-on-error -file-line-error
+BIPP=biber # Bibliography Information Processing Program
+RM=rm -f
+COPY_BIPP_SRC=echo $(bipp_src) | xargs cp -t $(build_dir)
+CHECK_BUILD=if [ ! -d "./$(build_dir)" ];then mkdir $(build_dir); fi
+
+
+tex_to_pdf=export TEXMFHOME=.:$(DerpTeX_LaTeX_dir):$(TEXMFHOME); $(TEX_ENGINE) $(TEX_ENGINE_FLAGS) -output-directory=$(build_dir) -jobname=$(document_name) $(tex_src)
+# Generate PDF
+pdf:$(tex_src)
+	$(CHECK_BUILD)
+	$(COPY_BIPP_SRC)
+	$(tex_to_pdf)
+	cd $(build_dir)/;$(BIPP) $(document_name).bcf
+	$(tex_to_pdf)
+	$(tex_to_pdf)
 
 # Clean build dir
 clean:
-	$(RM) ./$(BUILD_DIR)/*
+	$(RM) ./$(build_dir)/*
 
 # Purge build dir
 purge:
-	$(RM)r ./$(BUILD_DIR)
+	$(RM)r ./$(build_dir)

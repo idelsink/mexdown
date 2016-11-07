@@ -47,7 +47,8 @@ All the build executables are made in a 'build' folder.
 
 Make commands available:
 
--   `make` or `make document`: Build the PDF file from the LaTeX files.
+-   `make` or `make pdf`: Build the pdf file from the LaTeX files.
+-   `make copy OUT=...`: Copy files from build folder to ...
 -   `make clean`: Clean the build directory
 -   `make purge`: Delete the Build directory
 

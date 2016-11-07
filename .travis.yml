@@ -19,4 +19,6 @@ env:
     - TEST_DIR=cv
 
 script:
-    - cd $TEST_DIR && make
+    - cd $TEST_DIR && make pdf
+    - make copy OUT=~/DerpTeX-LaTeX_out EXT=pdf
+    - ls -l ~/DerpTeX-LaTeX_out

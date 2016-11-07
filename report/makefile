@@ -1,9 +1,9 @@
 # configuration, edit these values if necessary
-DerpTeX_LaTeX_dir=$(shell dirname $(shell pwd)) # directory to the DerpTeX-LaTeX repository
+DerpTeX_LaTeX_dir=$(shell dirname $(shell pwd))
 build_dir=build
 tex_src=./main.tex
 bipp_src=./misc/references.bib
-document_name=$(shell basename $(shell pwd)) # name of current directory
+document_name=$(shell basename $(shell pwd))
 
 ##########################
 # DerpTex-LaTeX makefile #
@@ -18,7 +18,7 @@ CHECK_BUILD=if [ ! -d "./$(build_dir)" ];then mkdir $(build_dir); fi
 
 
 tex_to_pdf=export TEXMFHOME=.:$(DerpTeX_LaTeX_dir):$(TEXMFHOME); $(TEX_ENGINE) $(TEX_ENGINE_FLAGS) -output-directory=$(build_dir) -jobname=$(document_name) $(tex_src)
-# Generate PDF
+# generate PDF
 pdf:$(tex_src)
 	$(CHECK_BUILD)
 	$(COPY_BIPP_SRC)
@@ -27,10 +27,35 @@ pdf:$(tex_src)
 	$(tex_to_pdf)
 	$(tex_to_pdf)
 
-# Clean build dir
+# copy over files (e.g. pdfs etc)
+# OUT = output directory
+# EXT = extension to copy over
+EXT=pdf
+.PHONY: copy
+copy:
+ifndef OUT
+	$(error OUT is not defined.)
+endif
+ifeq ($(OUT), )
+	$(error OUT is defined, but is empty.)
+endif
+ifndef EXT
+	$(error EXT is not defined.)
+endif
+ifeq ($(EXT), )
+	$(error EXT is defined, but is empty.)
+endif
+	mkdir -p ${OUT}
+ifneq ($(wildcard $(build_dir)/$(document_name).$(EXT)),)
+	cp $(build_dir)/$(document_name).$(EXT) $(OUT)
+else
+	$(error $(build_dir)/$(document_name).$(EXT) not found.)
+endif
+
+# clean build dir
 clean:
 	$(RM) ./$(build_dir)/*
 
-# Purge build dir
+# purge build dir
 purge:
-	$(RM)r ./$(build_dir)
+	$(RM) -r ./$(build_dir)

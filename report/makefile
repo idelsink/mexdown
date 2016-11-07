@@ -1,6 +1,6 @@
 # makefile for documentation
 LATEX_PDF=xelatex
-LATEXFLAGS=-enable-write18
+LATEXFLAGS=-enable-write18 -halt-on-error -file-line-error
 BIBTEX=biber
 RM=rm -f
 BUILD_DIR=build
@@ -14,7 +14,7 @@ latex_src=./main.tex
 bibtex_src=./misc/references.bib
 
 # Generate PDF
-document_name=document
+document_name=$(shell basename $(shell pwd)) # name of current directory
 latex_to_pdf=export TEXMFHOME=.:$(DERPTEX_LATEX_DIR):$(TEXMFHOME); $(LATEX_PDF) $(LATEXFLAGS) -output-directory=$(BUILD_DIR) -jobname=$(document_name) $(latex_src)
 documentation:$(latex_src)
 			  $(CHECK_BUILD)

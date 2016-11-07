@@ -49,6 +49,7 @@
 \RequirePackage{tabularx}       % Tabulars with adjustable-width columns
 \RequirePackage{xargs}          % Define commands with many optional arguments
 \RequirePackage{datetime}       % Change format of \today with commands for current time
+\RequirePackage{mwe}            % Packages and image files for minimal working example (MWE)
 
 % include custom packages
 \RequirePackage{cv-properties}

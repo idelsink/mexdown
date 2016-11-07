@@ -34,6 +34,7 @@
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
 \RequirePackage{parskip}        % Replace paragraph indents with vertical whitespace
+\RequirePackage{mwe}            % Packages and image files for minimal working example (MWE)
 
 % include custom packages
 \RequirePackage{tikz-er2}

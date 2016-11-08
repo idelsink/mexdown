@@ -32,7 +32,7 @@ pdf:$(tex_src)
 # EXT = extension to copy over
 EXT=pdf
 .PHONY: copy
-copy:
+copy: ;
 ifndef OUT
 	$(error OUT is not defined.)
 endif
@@ -45,9 +45,9 @@ endif
 ifeq ($(EXT), )
 	$(error EXT is defined, but is empty.)
 endif
-	mkdir -p ${OUT}
+	$(shell mkdir -p $(OUT))
 ifneq ($(wildcard $(build_dir)/$(document_name).$(EXT)),)
-	cp $(build_dir)/$(document_name).$(EXT) $(OUT)
+	$(shell cp $(build_dir)/$(document_name).$(EXT) $(OUT))
 else
 	$(error $(build_dir)/$(document_name).$(EXT) not found.)
 endif

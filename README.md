@@ -1,6 +1,9 @@
-# DerpTeX-LaTeX [![Build Status](https://travis-ci.org/idelsink/derptex-latex.svg?branch=master)](https://travis-ci.org/idelsink/derptex-latex)
+# mexdown [![Build Status](https://travis-ci.org/idelsink/mexdown-latex.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-latex)
 
-DerpTeX is the "fancy" theme name for my LaTeX templates.
+Mexdown is the theme name for these LaTeX templates that use markdown.
+
+Mexdown is a combination between *Markdown* and *LaTeX*.
+This also translates nice to Mixed Markdown with LaTeX.
 
 The supplied makefile can generate a PDF from these files.
 
@@ -8,7 +11,7 @@ The supplied makefile can generate a PDF from these files.
 
 Templates tested on:
 
--   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/derptex-latex))
+-   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/mexdown-latex))
 -   Fedora 23
 -   Fedora 24
 

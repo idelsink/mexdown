@@ -12,7 +12,7 @@ notifications:
 install:
     - sudo ./install_latex.sh YES
     - sudo mkdir -p /usr/share/fonts/fontawesome
-    - sudo cp tex/latex/local/derptex-latex/packages/fontawesome/opentype/FontAwesome.otf /usr/share/fonts/fontawesome/
+    - sudo cp tex/latex/local/mexdown-latex/packages/fontawesome/opentype/FontAwesome.otf /usr/share/fonts/fontawesome/
 
 env:
     - TEST_DIR=report
@@ -20,5 +20,5 @@ env:
 
 script:
     - cd $TEST_DIR && make pdf
-    - make copy OUT=~/DerpTeX-LaTeX_out EXT=pdf
-    - ls -l ~/DerpTeX-LaTeX_out
+    - make copy OUT=~/mexdown_out EXT=pdf
+    - ls -l ~/mexdown_out

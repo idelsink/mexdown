@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{derptex-report}[2016/05/29 Custom report layout/format by Ingmar Delsink]
+\ProvidesClass{mexdown-report}[2016/05/29 Custom report layout/format by Ingmar Delsink]
 
 \LoadClass{report} % Load default class
 
@@ -49,7 +49,7 @@
 \RequirePackage{language-basicstyle}
 \RequirePackage{language-tex}
 
-% DerpTeX-report template version
+% mexdown-report template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}
 \templateversion{2.0.0} % set default value
@@ -88,7 +88,7 @@
         pdfstartpage  = 1,
         pdfauthor = {\printauthor},
         pdftitle = {\printtitle},
-        pdfcreator = {\LaTeX{} with 'DerpTeX-report' package},
+        pdfcreator = {\LaTeX{} with 'mexdown-report' package},
         bookmarksdepth = 2 % to show sections and subsections
     }
 }

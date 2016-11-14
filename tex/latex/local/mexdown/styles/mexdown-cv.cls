@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{derptex-cv}[2016/08/27 Custom CV layout/format by Ingmar Delsink]
+\ProvidesClass{mexdown-cv}[2016/08/27 Custom CV layout/format by Ingmar Delsink]
 
 \LoadClass{moderncv} % Load default class
 \moderncvstyle{empty} % set to empty template
@@ -60,7 +60,7 @@
 \RequirePackage{lists}
 \RequirePackage{tikz-er2}
 
-% DerpTeX-cv template version
+% mexdown-cv template version
 \def\templateversion#1{\def\@templateversion{#1}}
 \newcommand{\printtemplateversion}{\@templateversion}
 \templateversion{1.0.0} % set default value
@@ -99,7 +99,7 @@
         pdfstartpage  = 1,
         pdfauthor = {\printauthor},
         pdftitle = {\printtitle},
-        pdfcreator = {\LaTeX{} with 'DerpTeX-cv' package},
+        pdfcreator = {\LaTeX{} with 'mexdown-cv' package},
         bookmarksdepth = 2 % to show sections and subsections
     }
 }
@@ -123,8 +123,8 @@
     {\thesection}{1em}{}
 
 % set an environment style
-% usage: \derptexcvstyle{env name}{style}
-\newcommand{\derptexcvstyle}[2]{%
+% usage: \mexdowncvstyle{env name}{style}
+\newcommand{\mexdowncvstyle}[2]{%
     \ifcsname#1\endcsname%
         \renewenvironment{#1}{#2}{}
     \else%
@@ -132,11 +132,11 @@
     \fi%
 }
 % styles cventry
-\derptexcvstyle{cventrytitle}{}         % cventry title style
-\derptexcvstyle{cventrysubtitle}{}      % cventry subtitle style
-\derptexcvstyle{cventrybody}{}          % cventry main body style
-\derptexcvstyle{cventrydate}{}          % cventry date style
-\derptexcvstyle{cventrylocalization}{}  % cventry localization style
+\mexdowncvstyle{cventrytitle}{}         % cventry title style
+\mexdowncvstyle{cventrysubtitle}{}      % cventry subtitle style
+\mexdowncvstyle{cventrybody}{}          % cventry main body style
+\mexdowncvstyle{cventrydate}{}          % cventry date style
+\mexdowncvstyle{cventrylocalization}{}  % cventry localization style
 
 % cventry hspace
 % usage: \hspaceTYPE{value}

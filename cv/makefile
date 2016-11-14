@@ -1,13 +1,13 @@
 # configuration, edit these values if necessary
-DerpTeX_LaTeX_dir=$(shell dirname $(shell pwd))
+mexdown_dir=$(shell dirname $(shell pwd))
 build_dir=build
 tex_src=./cv.tex
 bipp_src=
 document_name=$(shell basename $(shell pwd))
 
-##########################
-# DerpTex-LaTeX makefile #
-##########################
+####################
+# mexdown makefile #
+####################
 # only edit if you know what you're doing; the point of no return
 TEX_ENGINE=xelatex
 TEX_ENGINE_FLAGS=-enable-write18 -halt-on-error -file-line-error
@@ -17,7 +17,7 @@ COPY_BIPP_SRC=echo $(bipp_src) | xargs cp -t $(build_dir)
 CHECK_BUILD=if [ ! -d "./$(build_dir)" ];then mkdir $(build_dir); fi
 
 
-tex_to_pdf=export TEXMFHOME=.:$(DerpTeX_LaTeX_dir):$(TEXMFHOME); $(TEX_ENGINE) $(TEX_ENGINE_FLAGS) -output-directory=$(build_dir) -jobname=$(document_name) $(tex_src)
+tex_to_pdf=export TEXMFHOME=.:$(mexdown_dir):$(TEXMFHOME); $(TEX_ENGINE) $(TEX_ENGINE_FLAGS) -output-directory=$(build_dir) -jobname=$(document_name) $(tex_src)
 # generate PDF
 pdf:$(tex_src)
 	$(CHECK_BUILD)

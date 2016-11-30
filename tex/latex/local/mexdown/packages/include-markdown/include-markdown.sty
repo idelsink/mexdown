@@ -3,32 +3,56 @@
 and include the latex file]
 
 \RequirePackage{ifthen}             % conditional commands in LaTeX documents
+\RequirePackage{xkeyval}            % Extension of the keyval package
 \RequirePackage{build-helper}
 
-\newcommand\inputmarkdown[3]
-% #1 = path,
-% #2 = filename,
-% #3 extra parameters.
-%   "unlisted": unlisted chapter
+% ========= KEY DEFINITIONS =========
+\define@key{INCLUDE_MARKDOWN}{unlisted}{\def\includeunlisted{#1}}
+\define@key{INCLUDE_MARKDOWN}{chapters}{\def\firstchapters{#1}}
+
+\newcommand\inputmarkdown[3][]
+% #1 = extra parameters, see defaults
+% #2 = path,
+% #3 = filename
 {
-    \immediate\write18{
+    % ========= KEY DEFAULTS =========
+    \setkeys{INCLUDE_MARKDOWN}{
+        unlisted=false, % unlisted chapter
+        chapters=true   % set first header to chapters
+    }
+    \setkeys{INCLUDE_MARKDOWN}{#1}
+    % markdown to latex command
+    \def\includeMdCommand{
         pandoc  % converter
-        --chapters              % set first header to chapters
+    }
+    % set first header to chapters
+    \ifthenelse{\equal{\firstchapters}{true}} {
+        \edef\includeMdCommand{\includeMdCommand
+            --chapters              % set first header to chapters
+        }
+    }{% false
+    }
+    % remainder of command
+    \edef\includeMdCommand{\includeMdCommand
         --listings              % use the listings package for LaTeX code blocks
-        ./#1/#2.md              % source
+        ./#2/#3.md              % source
         -f markdown -t latex    % type specification
-        -o \printbuildfolder/#2.tex         % destination/output
+        -o \printbuildfolder/#3.tex         % destination/output
+    }
+
+    \immediate\write18{
+        \includeMdCommand
     }
     % check if generated file exists
-    \IfFileExists{./\printbuildfolder/#2}{
+    \IfFileExists{./\printbuildfolder/#3}{
         % if unlisted, make sure it wont go into ToC
-        \ifthenelse{\equal{#3}{unlisted}} {
+        \ifthenelse{\equal{\includeunlisted}{true}} {
             \let\oldaddcontentsline\addcontentsline % copy old implementation
             \renewcommand{\addcontentsline}[3]{}    % redefine
         }{% false
         }
         % include generated file
-        \input{./\printbuildfolder/#2}
+        \input{./\printbuildfolder/#3}
         % this newline here is NEEDED
         % this because \input is used.
         % Pandoc will remove the last newline.
@@ -39,13 +63,13 @@ and include the latex file]
 
         %%%%%%%%%%%%%%%%%%%%%%% END OF OBLIGATORY NEWLINE
         % if unlisted, make sure it wont go into ToC
-        \ifthenelse{\equal{#3}{unlisted}} {
+        \ifthenelse{\equal{\includeunlisted}{true}} {
             \let\addcontentsline\oldaddcontentsline % copy back
         }{% false
         }
     }{ % file does not exist
         \PackageError{include-markdown}
-        {the file "./\printbuildfolder/#2.tex" is missing.}
+        {the file "./\printbuildfolder/#3.tex" is missing.}
         {is the build folder set correctly? is pandoc installed?}
     }
 }

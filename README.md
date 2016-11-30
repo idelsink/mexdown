@@ -1,4 +1,4 @@
-# mexdown [![Build Status](https://travis-ci.org/idelsink/mexdown-latex.svg?branch=master)](https://travis-ci.org/idelsink/mexdown-latex)
+# mexdown [![Build Status](https://travis-ci.org/idelsink/mexdown.svg?branch=master)](https://travis-ci.org/idelsink/mexdown)
 
 Mexdown is the theme name for these LaTeX templates that use markdown.
 
@@ -11,7 +11,7 @@ The supplied makefile can generate a PDF from these files.
 
 Templates tested on:
 
--   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/mexdown-latex))
+-   Ubuntu 14.04.3 LTS ([See Travis-ci](https://travis-ci.org/idelsink/mexdown))
 -   Fedora 23
 -   Fedora 24
 

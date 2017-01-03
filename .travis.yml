@@ -20,20 +20,19 @@ env:
         - DISTRO=fedora25   CLASS=report
         - DISTRO=fedora25   CLASS=cv
     global:
-        - IMAGE="docker.io/idelsink/mexdown:${DISTRO}"
         - NAME="mexdown"
         - EXEC="docker exec mexdown"
 
 before_install:
     - docker pull idelsink/mexdown:${DISTRO}
     - docker run --name ${NAME} -it -d idelsink/mexdown:${DISTRO} sh
-    - export WORKDIR=$($RUN bash -c 'echo $PWD')
+    - export WORKDIR=${$EXEC pwd}
     - docker cp ./ $NAME:$WORKDIR
 
 install:
     - $EXEC sudo ./install_latex.sh YES
 
 script:
-    - $EXEC cd $CLASS && make pdf
-    - $EXEC cd $CLASS && make copy OUT=~/mexdown_out EXT=pdf
-    - $EXEC cd $CLASS && ls -l ~/mexdown_out
+    - $EXEC make -C $CLASS pdf
+    - $EXEC make -C $CLASS copy OUT=~/mexdown_out EXT=pdf
+    - $EXEC ls -l ~/mexdown_out

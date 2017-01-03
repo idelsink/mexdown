@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env sh
 # Install LaTeX and needed deps for the documentation
 
 VERSION="0.1.1"
@@ -9,6 +9,7 @@ echo
 YES=""
 # Get package manager
 DNF_CMD=$(which dnf)
+YUM_CMD=$(which yum)
 APT_GET_CMD=$(which apt-get)
 PACMAN_CMD=$(which pacman)
 
@@ -95,11 +96,16 @@ if [[ ! -z $DNF_CMD ]]; then
     echo "Installing with DNF"
     sudo dnf check-update
     sudo dnf install ${DNF_PACKAGE_NAMES[@]} ${YES}
+elif [[ ! -z $YUM_CMD ]]; then
+    echo "Installing with YUM"
+    sudo yum check-update
+    sudo yum install ${DNF_PACKAGE_NAMES[@]} ${YES}
 elif [[ ! -z $APT_GET_CMD ]]; then
     echo "Installing with APT"
     sudo apt-get update
     sudo apt-get install ${DEB_PACKAGE_NAMES[@]} ${YES} --no-install-recommends # No recommended docs of 500+ MB!
 elif [[ ! -z $PACMAN_CMD ]]; then
+    echo "Installing with PACKMAN"
     if [[ ! -z $YES ]]; then
         YES="--noconfirm"
     fi

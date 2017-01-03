@@ -20,11 +20,11 @@ env:
         - DISTRO=fedora25   CLASS=report
         - DISTRO=fedora25   CLASS=cv
     global:
-        - IMAGE="docker.io/idelsink/mexdown:$DISTRO"
+        - IMAGE="docker.io/idelsink/mexdown:${!DISTRO}"
         - NAME="mexdown"
-        - PULL="docker pull $IMAGE"
-        - RUN="docker run --name $NAME -it -d $IMAGE sh"
-        - EXEC="docker exec $NAME"
+        - PULL="docker pull ${!IMAGE}"
+        - RUN="docker run --name ${!NAME} -it -d ${!IMAGE} sh"
+        - EXEC="docker exec ${!NAME}"
 
 before_install:
     - $PULL

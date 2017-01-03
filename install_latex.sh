@@ -15,7 +15,7 @@ PACMAN_CMD=$(which pacman)
 
 # Packages per manager
 # DNF
-DNF_PACKAGE_NAMES=(
+DNF_PACKAGE_NAMES=$(cat <<-END
     texlive
     texlive-tools
     texlive-babel
@@ -53,9 +53,10 @@ DNF_PACKAGE_NAMES=(
     texlive-mwe
     pandoc
     make
+END
 )
 # apt-get
-DEB_PACKAGE_NAMES=(
+DEB_PACKAGE_NAMES=$(cat <<-END
     texlive
     texlive-latex-extra
     texlive-fonts-recommended
@@ -68,9 +69,10 @@ DEB_PACKAGE_NAMES=(
     biber
     pandoc
     make
+END
 )
 # pacman
-PACMAN_PACKAGE_NAMES=(
+PACMAN_PACKAGE_NAMES=$(cat <<-END
     texlive-bibtexextra
     texlive-core
     texlive-formatsextra
@@ -85,6 +87,7 @@ PACMAN_PACKAGE_NAMES=(
     biber
     pandoc
     make
+END
 )
 
 # YES check

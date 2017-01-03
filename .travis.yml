@@ -11,12 +11,12 @@ env:
         - RUN="docker run --name $NAME -it -d $IMAGE sh"
         - EXEC="docker exec $NAME"
     matrix:
-        - DISTRO=fedora23
-        - DISTRO=fedora24
-        - DISTRO=fedora25
-    matrix:
-        - CLASS=report
-        - CLASS=cv
+        - DISTRO=fedora23   CLASS=report
+        - DISTRO=fedora23   CLASS=cv
+        - DISTRO=fedora24   CLASS=report
+        - DISTRO=fedora24   CLASS=cv
+        - DISTRO=fedora25   CLASS=report
+        - DISTRO=fedora25   CLASS=cv
 
 notifications:
     email:

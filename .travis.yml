@@ -1,15 +1,17 @@
 sudo: required
 
+git:
+    depth: 1
+
+notifications:
+    email:
+        on_success: never
+        on_failure: always
+
 services:
   - docker
 
 env:
-    global:
-        - IMAGE="docker.io/idelsink/mexdown"
-        - NAME="mexdown"
-        - PULL="docker pull $IMAGE"
-        - RUN="docker run --name $NAME -it -d $IMAGE sh"
-        - EXEC="docker exec $NAME"
     matrix:
         - DISTRO=fedora23   CLASS=report
         - DISTRO=fedora23   CLASS=cv
@@ -17,16 +19,23 @@ env:
         - DISTRO=fedora24   CLASS=cv
         - DISTRO=fedora25   CLASS=report
         - DISTRO=fedora25   CLASS=cv
+    global:
+        - IMAGE="docker.io/idelsink/mexdown:$DISTRO"
+        - NAME="mexdown"
+        - PULL="docker pull $IMAGE"
+        - RUN="docker run --name $NAME -it -d $IMAGE sh"
+        - EXEC="docker exec $NAME"
 
-notifications:
-    email:
-        on_success: never
-        on_failure: always
+before_install:
+    - $PULL
+    - $RUN
+    - export WORKDIR=$($RUN bash -c 'echo $PWD')
+    - docker cp ./ $NAME:$WORKDIR
 
 install:
-    - sudo ./install_latex.sh YES
+    - $EXEC sudo ./install_latex.sh YES
 
 script:
-    - cd $CLASS && make pdf
-    - make copy OUT=~/mexdown_out EXT=pdf
-    - ls -l ~/mexdown_out
+    - $EXEC cd $CLASS && make pdf
+    - $EXEC cd $CLASS && make copy OUT=~/mexdown_out EXT=pdf
+    - $EXEC cd $CLASS && ls -l ~/mexdown_out

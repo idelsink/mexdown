@@ -98,21 +98,21 @@ fi
 if [ ! -z "$DNF_CMD" ]; then
     echo "Installing with DNF"
     sudo dnf check-update
-    sudo dnf install ${DNF_PACKAGE_NAMES[@]} ${YES}
+    sudo dnf install "${DNF_PACKAGE_NAMES}" "${YES}"
 elif [ ! -z "$YUM_CMD" ]; then
     echo "Installing with YUM"
     sudo yum check-update
-    sudo yum install ${DNF_PACKAGE_NAMES[@]} ${YES}
+    sudo yum install "${DNF_PACKAGE_NAMES}" "${YES}"
 elif [ ! -z "$APT_GET_CMD" ]; then
     echo "Installing with APT"
     sudo apt-get update
-    sudo apt-get install ${DEB_PACKAGE_NAMES[@]} ${YES} --no-install-recommends # No recommended docs of 500+ MB!
+    sudo apt-get install "${DEB_PACKAGE_NAMES}" "${YES}" --no-install-recommends # No recommended docs of 500+ MB!
 elif [ ! -z "$PACMAN_CMD" ]; then
     echo "Installing with PACKMAN"
     if [ ! -z "$YES" ]; then
         YES="--noconfirm"
     fi
-    sudo pacman -Sy --needed ${YES} ${PACMAN_PACKAGE_NAMES[@]}
+    sudo pacman -Sy --needed "${YES}" "${PACMAN_PACKAGE_NAMES}"
 else
     echo "package manager not supported"
     exit 1;

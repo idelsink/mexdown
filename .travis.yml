@@ -26,7 +26,7 @@ env:
 before_install:
     - docker pull idelsink/mexdown:${DISTRO}
     - docker run --name ${NAME} -it -d idelsink/mexdown:${DISTRO} sh
-    - export WORKDIR=${$EXEC pwd}
+    - export WORKDIR=$($EXEC pwd)
     - docker cp ./ $NAME:$WORKDIR
 
 install:

@@ -1,4 +1,6 @@
-# mexdown [![Build Status](https://travis-ci.org/idelsink/mexdown.svg?branch=master)](https://travis-ci.org/idelsink/mexdown)
+# mexdown
+[![Build Status](https://travis-ci.org/idelsink/mexdown.svg?branch=master)](https://travis-ci.org/idelsink/mexdown)
+[![Run Status](https://api.shippable.com/projects/57f173da50f20d10005e1615/badge?branch=master)](https://app.shippable.com/projects/57f173da50f20d10005e1615)
 
 Mexdown is the theme name for these LaTeX templates that use markdown.
 

@@ -1,8 +1,22 @@
-# Ubuntu Trusty support
-dist: trusty
+sudo: required
 
-os:
-    - linux
+services:
+  - docker
+
+env:
+    global:
+        - IMAGE="docker.io/idelsink/mexdown"
+        - NAME="mexdown"
+        - PULL="docker pull $IMAGE"
+        - RUN="docker run --name $NAME -it -d $IMAGE sh"
+        - EXEC="docker exec $NAME"
+    matrix:
+        - DISTRO=fedora23
+        - DISTRO=fedora24
+        - DISTRO=fedora25
+    matrix:
+        - CLASS=report
+        - CLASS=cv
 
 notifications:
     email:
@@ -11,14 +25,8 @@ notifications:
 
 install:
     - sudo ./install_latex.sh YES
-    - sudo mkdir -p /usr/share/fonts/fontawesome
-    - sudo cp tex/latex/local/mexdown/packages/fontawesome/opentype/FontAwesome.otf /usr/share/fonts/fontawesome/
-
-env:
-    - TEST_DIR=report
-    - TEST_DIR=cv
 
 script:
-    - cd $TEST_DIR && make pdf
+    - cd $CLASS && make pdf
     - make copy OUT=~/mexdown_out EXT=pdf
     - ls -l ~/mexdown_out

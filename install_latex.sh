@@ -15,7 +15,7 @@ PACMAN_CMD=$(which pacman)
 
 # Packages per manager
 # DNF
-DNF_PACKAGE_NAMES=(
+DNF_PACKAGE_NAMES=$(cat <<-END
     texlive
     texlive-tools
     texlive-babel
@@ -53,9 +53,10 @@ DNF_PACKAGE_NAMES=(
     texlive-mwe
     pandoc
     make
+END
 )
 # apt-get
-DEB_PACKAGE_NAMES=(
+DEB_PACKAGE_NAMES=$(cat <<-END
     texlive
     texlive-latex-extra
     texlive-fonts-recommended
@@ -68,9 +69,10 @@ DEB_PACKAGE_NAMES=(
     biber
     pandoc
     make
+END
 )
 # pacman
-PACMAN_PACKAGE_NAMES=(
+PACMAN_PACKAGE_NAMES=$(cat <<-END
     texlive-bibtexextra
     texlive-core
     texlive-formatsextra
@@ -85,31 +87,32 @@ PACMAN_PACKAGE_NAMES=(
     biber
     pandoc
     make
+END
 )
 
 # YES check
-if [[ $1 == "YES" ]]; then
+if [ "$1" = "YES" ]; then
     YES="-y"
 fi
 
-if [[ ! -z $DNF_CMD ]]; then
+if [ ! -z "$DNF_CMD" ]; then
     echo "Installing with DNF"
     sudo dnf check-update
-    sudo dnf install ${DNF_PACKAGE_NAMES[@]} ${YES}
-elif [[ ! -z $YUM_CMD ]]; then
+    sudo dnf install ${DNF_PACKAGE_NAMES} ${YES}
+elif [ ! -z "$YUM_CMD" ]; then
     echo "Installing with YUM"
     sudo yum check-update
-    sudo yum install ${DNF_PACKAGE_NAMES[@]} ${YES}
-elif [[ ! -z $APT_GET_CMD ]]; then
+    sudo yum install ${DNF_PACKAGE_NAMES} ${YES}
+elif [ ! -z "$APT_GET_CMD" ]; then
     echo "Installing with APT"
     sudo apt-get update
-    sudo apt-get install ${DEB_PACKAGE_NAMES[@]} ${YES} --no-install-recommends # No recommended docs of 500+ MB!
-elif [[ ! -z $PACMAN_CMD ]]; then
+    sudo apt-get install ${DEB_PACKAGE_NAMES} ${YES} --no-install-recommends # No recommended docs of 500+ MB!
+elif [ ! -z "$PACMAN_CMD" ]; then
     echo "Installing with PACKMAN"
-    if [[ ! -z $YES ]]; then
+    if [ ! -z "$YES" ]; then
         YES="--noconfirm"
     fi
-    sudo pacman -Sy --needed ${YES} ${PACMAN_PACKAGE_NAMES[@]}
+    sudo pacman -Sy --needed ${YES} ${PACMAN_PACKAGE_NAMES}
 else
     echo "package manager not supported"
     exit 1;

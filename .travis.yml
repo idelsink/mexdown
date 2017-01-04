@@ -20,12 +20,13 @@ env:
         - DISTRO=fedora25   CLASS=report
         - DISTRO=fedora25   CLASS=cv
     global:
+        - IMAGE="idelsink/mexdown"
         - NAME="mexdown"
         - EXEC="docker exec mexdown"
 
 before_install:
-    - docker pull idelsink/mexdown:${DISTRO}
-    - docker run --name ${NAME} -it -d idelsink/mexdown:${DISTRO} sh
+    - docker pull $IMAGE:$DISTRO
+    - docker run --name $NAME -it -d $IMAGE:$DISTRO sh
     - export WORKDIR=$($EXEC pwd)
     - docker cp ./ $NAME:$WORKDIR
 

@@ -1,8 +1,5 @@
 sudo: required
 
-git:
-    depth: 1
-
 notifications:
     email:
         on_success: never

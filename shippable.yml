@@ -6,8 +6,8 @@ integrations:
       on_failure: always
 
 env:
-    - DISTRO=fedora23   CLASS=report
-    - DISTRO=fedora23   CLASS=cv
+    - DISTRO=latest     CLASS=report
+    - DISTRO=latest     CLASS=cv
     - DISTRO=fedora24   CLASS=report
     - DISTRO=fedora24   CLASS=cv
     - DISTRO=fedora25   CLASS=report

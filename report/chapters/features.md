@@ -5,6 +5,15 @@ will be described here.
 
 The template used is the report template, v\printtemplateversion.  
 
+## Table
+
+| First Header                | Second Header                |
+|:----------------------------|:-----------------------------|
+| Content from cell 1         | Content from cell 2          |
+| Content in the first column | Content in the second column |
+
+: Table Caption
+
 ## biber
 
 This template has support for references from a `.bib` file.
@@ -70,7 +79,7 @@ Make diagrams with tikz-er2
 
 ## Linking to things
 
-[This](#summary) links to the summary. 
+[This](#summary) links to the summary.
 
 ## Tests
 

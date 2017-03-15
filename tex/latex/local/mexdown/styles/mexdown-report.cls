@@ -1,7 +1,28 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mexdown-report}[2016/05/29 Custom report layout/format by Ingmar Delsink]
 
-\LoadClass{report} % Load default class
+% mexdown font size
+\def\mexdownSize#1{\def\@mexdownSize{#1}}
+\newcommand{\printmexdownSize}{\@mexdownSize}
+\mexdownSize{10pt} % set default value
+
+% mexdown-report parameters
+\DeclareOption{8pt}{\mexdownSize{8pt}}
+\DeclareOption{9pt}{\mexdownSize{9pt}}
+\DeclareOption{10pt}{\mexdownSize{10pt}}
+\DeclareOption{11pt}{\mexdownSize{11pt}}
+\DeclareOption{12pt}{\mexdownSize{12pt}}
+\DeclareOption{14pt}{\mexdownSize{14pt}}
+\DeclareOption{17pt}{\mexdownSize{17pt}}
+\DeclareOption{20pt}{\mexdownSize{20pt}}
+\DeclareOption*{
+  \ClassError{mexdown-report}{Unknown option '\CurrentOption'}
+}
+\ProcessOptions\relax
+% report accepts sizes: 10pt, 11pt, 12pt (by default 10pt)
+% extreport accepts:  8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt.
+%\LoadClass[\printmexdownSize]{report} % Load default class
+\LoadClass[\printmexdownSize]{extreport} % Load default class
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%    Packages

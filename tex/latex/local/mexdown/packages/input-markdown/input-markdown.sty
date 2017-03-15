@@ -9,6 +9,7 @@ and include the latex file]
 % ========= KEY DEFINITIONS =========
 \define@key{INPUT_MARKDOWN}{unlisted}{\def\includeunlisted{#1}}
 \define@key{INPUT_MARKDOWN}{chapters}{\def\firstchapters{#1}}
+\define@key{INPUT_MARKDOWN}{top-level-division}{\def\topLevelDivision{#1}} % from pandoc 1.18
 
 \newcommand\inputmarkdown[3][]
 % #1 = extra parameters, see defaults
@@ -18,19 +19,27 @@ and include the latex file]
     % ========= KEY DEFAULTS =========
     \setkeys{INPUT_MARKDOWN}{
         unlisted=false, % unlisted chapter
-        chapters=true   % set first header to chapters
+        chapters=true,  % set first header to chapters
+        top-level-division=false
     }
     \setkeys{INPUT_MARKDOWN}{#1}
     % markdown to latex command
     \def\inputMdCommand{
         pandoc  % converter
     }
-    % set first header to chapters
-    \ifthenelse{\equal{\firstchapters}{true}} {
-        \edef\inputMdCommand{\inputMdCommand
-            --chapters              % set first header to chapters
+    % set first header to xxx
+    \ifthenelse{\equal{\topLevelDivision}{false}} {
+        \ifthenelse{\equal{\firstchapters}{true}} {
+            \edef\inputMdCommand{\inputMdCommand
+                --chapters              % set first header to chapters
+            }
+        }{% false
         }
-    }{% false
+    }{% not empty
+        % set top level [default|section|chapter|part]
+        \edef\inputMdCommand{\inputMdCommand
+            --top-level-division=\topLevelDivision  % set first header to chapters
+        }
     }
     % remainder of command
     \edef\inputMdCommand{\inputMdCommand

@@ -59,7 +59,7 @@
 
 % include custom packages
 \RequirePackage{tikz-er2}
-\RequirePackage{include-markdown}
+\RequirePackage{input-markdown}
 \RequirePackage{custom-fonts}
 \RequirePackage{unlisted-toc}
 \RequirePackage{report-properties}

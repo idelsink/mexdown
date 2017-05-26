@@ -65,7 +65,7 @@
         pdfborderstyle={/S/U/W 1},  % underline links instead of boxes
         linkcolor=[RGB]{50,50,50},  % Color for normal internal links.
         anchorcolor=red,            % Color for anchor text.
-        citecolor=red,              % Color for bibliographical citations in text.
+        citecolor=[RGB]{50,50,50},  % Color for bibliographical citations in text.
         filecolor=magenta,          % Color for URLs which open local files.
         menucolor=red,              % Color for Acrobat menu items.
         runcolor=red,               % Color for run links (launch annotations).

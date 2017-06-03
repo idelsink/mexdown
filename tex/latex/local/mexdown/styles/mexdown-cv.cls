@@ -54,7 +54,7 @@
 % include custom packages
 \RequirePackage{cv-properties}
 \RequirePackage{custom-fonts}
-\RequirePackage{include-markdown}
+\RequirePackage{input-markdown}
 \RequirePackage{custom-fonts}
 \RequirePackage{unlisted-toc}
 \RequirePackage{lists}

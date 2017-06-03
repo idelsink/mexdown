@@ -64,7 +64,6 @@
 \RequirePackage{unlisted-toc}
 \RequirePackage{report-properties}
 \RequirePackage{lists}
-\RequirePackage{hyperlink-hyperref}
 \RequirePackage{fontawesome}
 
 % include custom listings language highlight packages

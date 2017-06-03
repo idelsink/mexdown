@@ -3,6 +3,9 @@
 to a hyperref command. hyperlink doesn't support links to other files and
 hyperref does.]
 
+% See the following issue: https://github.com/jgm/pandoc/issues/2560
+% This also breaks the Glossary links; so beware!
+
 \RequirePackage{hyperref} % Generate links
 
 \renewcommand*{\hyperlink}[2]{%

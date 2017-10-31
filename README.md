@@ -21,7 +21,7 @@ Templates tested on:
 
 This a template based on a `report` LaTeX class.
 The main goal is to write simple and effective LaTeX documents.
-The LaTex syntax is nice,
+The LaTeX syntax is nice,
 but if we're honest writing in markdown is much more simpler.
 Just write the chapters with mixed markdown and LaTeX commands,
 include it in the `main.tex` file, and you're done.
@@ -55,7 +55,7 @@ Make commands available:
 -   `make` or `make pdf`: Build the pdf file from the LaTeX files.
 -   `make copy OUT=...`: Copy files from build folder to ...
 -   `make clean`: Clean the build directory
--   `make purge`: Delete the Build directory
+-   `make purge`: Delete the build directory
 
 ## License
 

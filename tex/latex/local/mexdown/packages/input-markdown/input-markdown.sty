@@ -28,7 +28,7 @@ and include the latex file]
     % set first header to chapters
     \ifthenelse{\equal{\firstchapters}{true}} {
         \edef\inputMdCommand{\inputMdCommand
-            --chapters              % set first header to chapters
+            --top-level-division=chapter % set first header to chapters
         }
     }{% false
     }

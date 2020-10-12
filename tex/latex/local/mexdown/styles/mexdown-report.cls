@@ -54,6 +54,7 @@
 \RequirePackage{multirow}       % Create tabular cells spanning multiple rows
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
+\providecommand{\passthrough}[1]{#1} % Add dummy passthrough command when not defined, See: https://github.com/dotlambda/pandoc/commit/730796ee314d42477fab216621b8e44539c94656
 \RequirePackage{parskip}        % Replace paragraph indents with vertical whitespace
 \RequirePackage{mwe}            % Packages and image files for minimal working example (MWE)
 

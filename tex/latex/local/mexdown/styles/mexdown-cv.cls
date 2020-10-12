@@ -45,6 +45,7 @@
 \RequirePackage{multirow}       % Create tabular cells spanning multiple rows
 \RequirePackage{wrapfig}        % Produces figures which text can flow around
 \RequirePackage{listings}       % Typeset source code listings using LATEX
+\providecommand{\passthrough}[1]{#1} % Add dummy passthrough command when not defined, See: https://github.com/dotlambda/pandoc/commit/730796ee314d42477fab216621b8e44539c94656
 \RequirePackage{makecell}       % Tabular column heads and multilined cells
 \RequirePackage{tabularx}       % Tabulars with adjustable-width columns
 \RequirePackage{xargs}          % Define commands with many optional arguments

@@ -6,20 +6,18 @@ integrations:
       on_failure: always
 
 env:
-    - DISTRO=latest     CLASS=report
-    - DISTRO=latest     CLASS=cv
-    - DISTRO=fedora24   CLASS=report
-    - DISTRO=fedora24   CLASS=cv
-    - DISTRO=fedora25   CLASS=report
-    - DISTRO=fedora25   CLASS=cv
+  - TAG=latest    CLASS=report
+  - TAG=latest    CLASS=cv
+  - TAG=1         CLASS=report
+  - TAG=1         CLASS=cv
 
 build:
-    pre_ci_boot:
-        image_name: idelsink/mexdown
-        image_tag: $DISTRO
-        pull: true
-    ci:
-        - sudo ./install_latex.sh YES
-        - make -C $CLASS pdf
-        - make -C $CLASS copy OUT=~/mexdown_out EXT=pdf
-        - ls -l ~/mexdown_out
+  pre_ci_boot:
+    image_name: idelsink/mexdown-fedora
+    image_tag: $TAG
+    pull: true
+  ci:
+    - sudo ./install_latex.sh YES
+    - make -C $CLASS pdf
+    - make -C $CLASS copy OUT=~/mexdown_out EXT=pdf
+    - ls -l ~/mexdown_out

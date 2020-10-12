@@ -1,36 +1,30 @@
-sudo: required
-
 notifications:
-    email:
-        on_success: never
-        on_failure: always
+  email:
+    on_success: never
+    on_failure: always
 
 services:
   - docker
 
 env:
-    matrix:
-        - DISTRO=latest     CLASS=report
-        - DISTRO=latest     CLASS=cv
-        - DISTRO=fedora24   CLASS=report
-        - DISTRO=fedora24   CLASS=cv
-        - DISTRO=fedora25   CLASS=report
-        - DISTRO=fedora25   CLASS=cv
-    global:
-        - IMAGE="idelsink/mexdown"
-        - NAME="mexdown"
-        - EXEC="docker exec mexdown"
+  matrix:
+    - TAG=latest    CLASS=report
+    - TAG=latest    CLASS=cv
+  global:
+    - IMAGE="idelsink/mexdown-fedora"
+    - NAME="mexdown"
+    - EXEC="docker exec mexdown"
 
 before_install:
-    - docker pull $IMAGE:$DISTRO
-    - docker run --name $NAME -it -d $IMAGE:$DISTRO sh
-    - export WORKDIR=$($EXEC pwd)
-    - docker cp ./ $NAME:$WORKDIR
+  - docker pull $IMAGE:$TAG
+  - docker run --name $NAME -it -d $IMAGE:$TAG sh
+  - export WORKDIR=$($EXEC pwd)
+  - docker cp ./ $NAME:$WORKDIR
 
 install:
-    - $EXEC sudo ./install_latex.sh YES
+  - $EXEC sudo ./install_latex.sh YES
 
 script:
-    - $EXEC make -C $CLASS pdf
-    - $EXEC make -C $CLASS copy OUT=~/mexdown_out EXT=pdf
-    - $EXEC ls -l ~/mexdown_out
+  - $EXEC make -C $CLASS pdf
+  - $EXEC make -C $CLASS copy OUT=~/mexdown_out EXT=pdf
+  - $EXEC ls -l ~/mexdown_out

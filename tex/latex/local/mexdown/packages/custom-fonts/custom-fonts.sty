@@ -25,6 +25,7 @@ via the fontspec package]
                 %\PackageWarning{custom-fonts}{text \csname#2\endcsname}
                 \expandafter\newfontfamily\csname#2\endcsname[#1]{#2} % make new font
             }{
+                \expandafter\let\csname#3\endcsname\undefined % delete old command
                 \expandafter\newfontfamily\csname#3\endcsname[#1]{#2} % make new font
                 % use #3 as command
                 \ifthenelse{\equal{#3}{bodyfont}}{

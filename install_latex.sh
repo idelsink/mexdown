@@ -51,6 +51,7 @@ DNF_PACKAGE_NAMES=$(cat <<-END
     texlive-xargs
     texlive-datetime
     texlive-mwe
+    texlive-chngcntr
     pandoc
     make
 END

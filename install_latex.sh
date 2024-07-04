@@ -49,6 +49,7 @@ DNF_PACKAGE_NAMES=$(cat <<-END
     texlive-ltablex
     texlive-moderncv
     texlive-xargs
+    texlive-academicons
     texlive-datetime
     texlive-mwe
     texlive-chngcntr

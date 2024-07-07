@@ -25,6 +25,7 @@ DNF_PACKAGE_NAMES=$(cat <<-END
     texlive-geometry
     texlive-titling
     texlive-fancyhdr
+    texlive-fontawesome5
     texlive-tocloft
     texlive-changepage
     texlive-fontspec
